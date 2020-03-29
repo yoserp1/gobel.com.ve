@@ -12,7 +12,7 @@
     <!-- Site Favicon -->
     <link rel="shortcut icon" href="{{ asset('/images/favicon.ico') }}" type="image/ico">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/bootstrap.min.css') }}">
     <!-- Material Icon -->
     <link rel="stylesheet" href="{{ asset('/css/materialdesignicons.min.css') }}">
     <!-- Carousel Slider -->
