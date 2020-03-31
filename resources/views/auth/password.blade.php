@@ -59,13 +59,33 @@
         <div class="hero-static col-md-6 d-flex align-items-center bg-white">
             <div class="p-3 w-100">
                 <div class="text-center">
-                    <a class="link-fx text-warning font-w700 font-size-h1" href="index.html">
+                    <a class="link-fx text-warning font-w700 font-size-h1" href="{{ url('/cms') }}">
                         <span class="text-dark">CMS</span><span class="text-warning">mix</span>
                     </a>
                     <p class="text-uppercase font-w700 font-size-sm text-muted">Recuperar contraseña</p>
                 </div>
                 <div class="row no-gutters justify-content-center">
                     <div class="col-sm-8 col-xl-6">
+
+                        @if (count($errors) > 0)
+                            <div class="alert alert-danger d-flex align-items-center justify-content-between" role="alert">
+                                <div class="flex-fill mr-3">
+                                    <p class="mb-0">Hay problemas con su validacion!</p>
+                                </div>
+                                <div class="flex-00-auto">
+                                    <i class="fa fa-fw fa-times-circle"></i>
+                                </div>
+                            </div>
+                        @endif
+
+                        @if( $errors->has('da_mensaje') )
+                            <div class="alert alert-danger d-flex align-items-center justify-content-between" role="alert">
+                                <div class="flex-fill mr-3">
+                                    <p class="mb-0">{{ $errors->first('da_mensaje') }}</p>
+                                </div>
+                            </div>
+                        @endif
+
                         <form class="js-validation-reminder" action="{{ url('/cms/autenticar/recuperar') }}" method="POST">
                             <div class="form-group py-3">
                                 <input type="text" class="form-control form-control-lg form-control-alt {!! $errors->has('email') ? 'is-invalid' : '' !!}" {!! $errors->has('email') ? 'aria-describedby="email-error" aria-invalid="true"' : '' !!} id="email" name="email" placeholder="Email">
