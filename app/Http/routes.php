@@ -27,6 +27,7 @@ Route::group(['namespace' => 'Cms'], function(){
 	Route::get('cms', 'autenticarController@login');
 	Route::post('cms/autenticar', 'autenticarController@validar'); // Verificar datos
 	Route::get('cms/autenticar', 'autenticarController@salir'); // Finalizar sesión
-	Route::post('cms/autenticar/recuperar', 'autenticarController@recuperar'); // Recuperar Password
+	Route::get('cms/recuperar', 'passwordController@recuperar'); // Recuperar
+	Route::post('cms/autenticar/recuperar', 'passwordController@enviar'); // Recuperar Password
 	Route::get('cms/inicio', 'panelController@inicio');
 });
