@@ -2,7 +2,7 @@
 
 namespace portal\Http\Controllers\Cms;
 //*******agregar esta linea******//
-use portal\Models\Autenticacion\tab_usuario;
+use portal\Models\Cms\tab_usuario;
 use Auth;
 use View;
 use Redirect;

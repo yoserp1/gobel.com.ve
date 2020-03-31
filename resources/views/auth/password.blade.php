@@ -87,8 +87,9 @@
                         @endif
 
                         <form class="js-validation-reminder" action="{{ url('/cms/autenticar/recuperar') }}" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group py-3">
-                                <input type="text" class="form-control form-control-lg form-control-alt {!! $errors->has('email') ? 'is-invalid' : '' !!}" {!! $errors->has('email') ? 'aria-describedby="email-error" aria-invalid="true"' : '' !!} id="email" name="email" placeholder="Email">
+                                <input type="text" class="form-control form-control-lg form-control-alt {!! $errors->has('email') ? 'is-invalid' : '' !!}" {!! $errors->has('email') ? 'aria-describedby="email-error" aria-invalid="true"' : '' !!} id="email" name="email" placeholder="Email" value="{{ old('email') }}">
                                 @if( $errors->has('email') )
                                     <div id="email-error" class="invalid-feedback animated fadeIn">{{ $errors->first('email') }}</div>
                                 @endif
