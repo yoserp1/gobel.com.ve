@@ -60,23 +60,23 @@
             <div class="p-3 w-100">
                 <div class="text-center">
                     <a class="link-fx text-warning font-w700 font-size-h1" href="index.html">
-                        <span class="text-dark">Dash</span><span class="text-warning">mix</span>
+                        <span class="text-dark">CMS</span><span class="text-warning">mix</span>
                     </a>
-                    <p class="text-uppercase font-w700 font-size-sm text-muted">Password Reminder</p>
+                    <p class="text-uppercase font-w700 font-size-sm text-muted">Recuperar contraseña</p>
                 </div>
                 <div class="row no-gutters justify-content-center">
                     <div class="col-sm-8 col-xl-6">
                         <form class="js-validation-reminder" action="be_pages_auth_all.html" method="POST">
                             <div class="form-group py-3">
-                                <input type="text" class="form-control form-control-lg form-control-alt" id="reminder-credential" name="reminder-credential" placeholder="Username or Email">
+                                <input type="text" class="form-control form-control-lg form-control-alt" id="reminder-credential" name="reminder-credential" placeholder="Email">
                             </div>
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-block btn-hero-lg btn-hero-warning">
-                                    <i class="fa fa-fw fa-reply mr-1"></i> Password Reminder
+                                    <i class="fa fa-fw fa-reply mr-1"></i> Recuperar
                                 </button>
                                 <p class="mt-3 mb-0 d-lg-flex justify-content-lg-between">
                                     <a class="btn btn-sm btn-light d-block d-lg-inline-block mb-1" href="{{ url('/cms') }}">
-                                        <i class="fa fa-sign-in-alt text-muted mr-1"></i> Sign In
+                                        <i class="fa fa-sign-in-alt text-muted mr-1"></i> Iniciar Sesión
                                     </a>
                                     {{--<a class="btn btn-sm btn-light d-block d-lg-inline-block mb-1" href="{{ url('/cms/registrar') }}">
                                         <i class="fa fa-plus text-muted mr-1"></i> New Account
@@ -91,10 +91,10 @@
         <div class="hero-static col-md-6 d-none d-md-flex align-items-md-center justify-content-md-center text-md-center">
             <div class="p-3">
                 <p class="display-4 font-w700 text-white mb-0">
-                    Don’t worry of failure..
+                    No te preocupes por el fracaso..
                 </p>
                 <p class="font-size-h1 font-w600 text-white-75 mb-0">
-                    ..but learn from it!
+                    ..pero aprende de eso!
                 </p>
             </div>
         </div>
