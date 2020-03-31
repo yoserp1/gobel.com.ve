@@ -66,9 +66,12 @@
                 </div>
                 <div class="row no-gutters justify-content-center">
                     <div class="col-sm-8 col-xl-6">
-                        <form class="js-validation-reminder" action="be_pages_auth_all.html" method="POST">
+                        <form class="js-validation-reminder" action="{{ url('/cms/autenticar/recuperar') }}" method="POST">
                             <div class="form-group py-3">
-                                <input type="text" class="form-control form-control-lg form-control-alt" id="reminder-credential" name="reminder-credential" placeholder="Email">
+                                <input type="text" class="form-control form-control-lg form-control-alt {!! $errors->has('email') ? 'is-invalid' : '' !!}" {!! $errors->has('email') ? 'aria-describedby="email-error" aria-invalid="true"' : '' !!} id="email" name="email" placeholder="Email">
+                                @if( $errors->has('email') )
+                                    <div id="email-error" class="invalid-feedback animated fadeIn">{{ $errors->first('email') }}</div>
+                                @endif
                             </div>
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-block btn-hero-lg btn-hero-warning">
