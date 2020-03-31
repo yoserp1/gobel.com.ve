@@ -60,7 +60,7 @@
             <div class="p-3 w-100">
                 <div class="mb-3 text-center">
                     <a class="link-fx font-w700 font-size-h1" href="{{ url('/cms') }}">
-                        <span class="text-dark">Dash</span><span class="text-primary">mix</span>
+                        <span class="text-dark">CMS</span><span class="text-primary">mix</span>
                     </a>
                     <p class="text-uppercase font-w700 font-size-sm text-muted">Iniciar Sesión</p>
                 </div>
@@ -82,9 +82,6 @@
                         <div class="alert alert-danger d-flex align-items-center justify-content-between" role="alert">
                             <div class="flex-fill mr-3">
                                 <p class="mb-0">{{ $errors->first('da_mensaje') }}</p>
-                            </div>
-                            <div class="flex-00-auto">
-                                <i class="fa fa-fw fa-times-circle"></i>
                             </div>
                         </div>
                     @endif

@@ -31,7 +31,8 @@ return [
 
     'lifetime' => 120,
 
-    'expire_on_close' => false,
+    //'expire_on_close' => false,
+    'expire_on_close' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -109,7 +110,8 @@ return [
     |
     */
 
-    'cookie' => 'laravel_session',
+    //'cookie' => 'laravel_session',
+    'cookie' => 'cms_session',
 
     /*
     |--------------------------------------------------------------------------

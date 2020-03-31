@@ -26,7 +26,7 @@ class loginRequest extends Request
     {
         return [
             //
-            'usuario' => 'required|numeric', 'contraseña' => 'required',
+            'usuario' => 'required', 'contraseña' => 'required',
         ];
     }
 }
