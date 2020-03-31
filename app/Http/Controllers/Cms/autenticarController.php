@@ -17,6 +17,8 @@ use Mail;
 //*******************************//
 use Illuminate\Http\Request;
 
+use portal\Http\Requests\loginRequest;
+
 use portal\Http\Requests;
 use portal\Http\Controllers\Controller;
 
@@ -105,6 +107,7 @@ class autenticarController extends Controller
 
 			return redirect('/cms/inicio');
 		}
+
 		return Redirect::back()->withErrors([
 			'da_mensaje' => 'Las credenciales que has introducido no coinciden con nuestros registros. Intente de Nuevo.',
 		])->withInput($request->except("contraseña"));
@@ -121,7 +124,7 @@ class autenticarController extends Controller
 		Auth::logout();
 		// redirect
 		Session::flash('msg', 'Sesion cerrada con exito!');
-		return Redirect::to('/cms/admin');
+		return Redirect::to('/cms');
     }
     
 }
