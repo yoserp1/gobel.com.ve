@@ -28,6 +28,8 @@ Route::group(['namespace' => 'Cms'], function(){
 	Route::post('cms/autenticar', 'autenticarController@validar'); // Verificar datos
 	Route::get('cms/autenticar', 'autenticarController@salir'); // Finalizar sesión
 	Route::get('cms/recuperar', 'passwordController@recuperar'); // Recuperar
-	Route::post('cms/autenticar/recuperar', 'passwordController@enviar'); // Recuperar Password
+	Route::post('cms/recuperar/enviar', 'passwordController@enviar'); // Recuperar Password
+	Route::get('cms/recuperar/{confirmacion}', 'passwordController@confirmar');
+	Route::post('cms/recuperar/cambiar', 'passwordController@guardar');
 	Route::get('cms/inicio', 'panelController@inicio');
 });

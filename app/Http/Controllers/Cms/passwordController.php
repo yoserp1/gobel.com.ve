@@ -109,6 +109,29 @@ class passwordController extends Controller
             ])->withInput();
         }
 
-	}
+    }
+    
+    /**
+	* Confirm a user's email address.
+	*
+	* @param  string $token
+	* @return mixed
+	*/
+	public function confirmar($llave)
+	{
+		if (tab_usuario::where('codigo_confirmacion', '=', $llave)->exists()) {
+
+			$usuario = tab_usuario::where('codigo_confirmacion', '=', $llave)->first();
+
+			return View::make('auth.reset')
+			->with('usuario', $usuario)
+			->with('llave', $llave);
+
+		}else{
+			return Redirect('/cms')->withErrors([
+				'da_mensaje' => 'Error: El codigo de verificacion no existe!'
+			]);
+		}
+    }
 	
 }

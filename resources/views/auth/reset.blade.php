@@ -53,58 +53,45 @@
 </head>
 <body>
 <div id="page-container">
-                <main id="main-container">
-<div class="bg-image" style="background-image: url('{{ asset('/assets/media/photos/photo19@2x.jpg') }}');">
-    <div class="row no-gutters bg-gd-sun-op">
+<main id="main-container">
+
+<div class="bg-video" data-vide-bg="{{ asset('/assets/media/videos/city_night') }}" data-vide-options="posterType: jpg">
+    <div class="row no-gutters bg-danger-op">
+
         <div class="hero-static col-md-6 d-flex align-items-center bg-white">
             <div class="p-3 w-100">
                 <div class="text-center">
-                    <a class="link-fx text-warning font-w700 font-size-h1" href="{{ url('/cms') }}">
-                        <span class="text-dark">CMS</span><span class="text-warning">mix</span>
+                    <a class="link-fx text-danger font-w700 font-size-h1" href="{{ url('/cms') }}">
+                        <span class="text-dark">CMS</span><span class="text-danger">mix</span>
                     </a>
-                    <p class="text-uppercase font-w700 font-size-sm text-muted">Recuperar contraseña</p>
+                    <p class="text-uppercase font-w700 font-size-sm text-muted">Recuperar Contraseña</p>
+                </div>
+                <div class="py-2 text-center">
+                    <div class="block-content">
+                        <i class="fa fa-user-tie fa-2x text-muted"></i>
+                        <p class="mt-3 mb-0 font-w600 font-size-lg">
+                            John Doe
+                        </p>
+                    </div>
                 </div>
                 <div class="row no-gutters justify-content-center">
                     <div class="col-sm-8 col-xl-6">
-
-                        @if (count($errors) > 0)
-                            <div class="alert alert-danger d-flex align-items-center justify-content-between" role="alert">
-                                <div class="flex-fill mr-3">
-                                    <p class="mb-0">Hay problemas con su validacion!</p>
-                                </div>
-                                <div class="flex-00-auto">
-                                    <i class="fa fa-fw fa-times-circle"></i>
-                                </div>
-                            </div>
-                        @endif
-
-                        @if( $errors->has('da_mensaje') )
-                            <div class="alert alert-danger d-flex align-items-center justify-content-between" role="alert">
-                                <div class="flex-fill mr-3">
-                                    <p class="mb-0">{{ $errors->first('da_mensaje') }}</p>
-                                </div>
-                            </div>
-                        @endif
-
-                        <form class="js-validation-reminder" action="{{ url('/cms/recuperar/enviar') }}" method="POST">
+                        <form class="js-validation-lock" action="{{ url('/cms/recuperar/cambiar') }}" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group py-3">
-                                <input type="text" class="form-control form-control-lg form-control-alt {!! $errors->has('email') ? 'is-invalid' : '' !!}" {!! $errors->has('email') ? 'aria-describedby="email-error" aria-invalid="true"' : '' !!} id="email" name="email" placeholder="Email" value="{{ old('email') }}">
-                                @if( $errors->has('email') )
-                                    <div id="email-error" class="invalid-feedback animated fadeIn">{{ $errors->first('email') }}</div>
-                                @endif
+                                <input type="password" class="form-control form-control-lg form-control-alt" id="lock-password" name="lock-password" placeholder="Password..">
                             </div>
                             <div class="form-group text-center">
-                                <button type="submit" class="btn btn-block btn-hero-lg btn-hero-warning">
-                                    <i class="fa fa-fw fa-reply mr-1"></i> Recuperar
+                                <button type="submit" class="btn btn-block btn-hero-lg btn-hero-danger">
+                                    <i class="fa fa-fw fa-lock-open mr-1"></i> Cambiar
                                 </button>
                                 <p class="mt-3 mb-0 d-lg-flex justify-content-lg-between">
-                                    <a class="btn btn-sm btn-light d-block d-lg-inline-block mb-1" href="{{ url('/cms') }}">
-                                        <i class="fa fa-sign-in-alt text-muted mr-1"></i> Iniciar Sesión
+                                    <a class="btn btn-sm btn-light d-block d-lg-inline-block mb-1" href="{{ url('/cms/recuperar') }}">
+                                        <i class="fa fa-exclamation-triangle text-muted mr-1"></i> ¿Olvidó su Contraseña?
                                     </a>
-                                    {{--<a class="btn btn-sm btn-light d-block d-lg-inline-block mb-1" href="{{ url('/cms/registrar') }}">
-                                        <i class="fa fa-plus text-muted mr-1"></i> Registrarse
-                                    </a>--}}
+                                    <a class="btn btn-sm btn-light d-block d-lg-inline-block mb-1" href="{{ url('/cms') }}">
+                                        <i class="fa fa-sign-out-alt text-muted mr-1"></i> Iniciar Sesión
+                                    </a>
                                 </p>
                             </div>
                         </form>
@@ -112,23 +99,26 @@
                 </div>
             </div>
         </div>
+
         <div class="hero-static col-md-6 d-none d-md-flex align-items-md-center justify-content-md-center text-md-center">
             <div class="p-3">
                 <p class="display-4 font-w700 text-white mb-0">
-                    No te preocupes por el fracaso..
+                    Visualiza tu idea..
                 </p>
                 <p class="font-size-h1 font-w600 text-white-75 mb-0">
-                    ..pero aprende de eso!
+                    ..y construyelo!
                 </p>
             </div>
         </div>
+
     </div>
 </div>
     </main>
     </div>
-<script src="{{ asset('/assets/js/dashmix.core.min-2.3.js') }}"></script>
-<script src="{{ asset('/assets/js/dashmix.app.min-2.3.js') }}"></script>
-<script src="{{ asset('/assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
-<script src="{{ asset('/assets/js/pages/auth_reminder.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/dashmix.core.min-2.3.js') }}"></script>
+    <script src="{{ asset('/assets/js/dashmix.app.min-2.3.js') }}"></script>
+    <script src="{{ asset('/assets/js/plugins/vide/jquery.vide.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/pages/op_auth_lock.min.js') }}"></script>
     </body>
 </html>

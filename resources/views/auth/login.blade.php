@@ -53,7 +53,7 @@
 </head>
 <body>
 <div id="page-container">
-                <main id="main-container">
+<main id="main-container">
 <div class="bg-image" style="background-image: url('{{ asset('/assets/media/photos/photo22@2x.jpg') }}');">
     <div class="row no-gutters bg-primary-op">
         <div class="hero-static col-md-6 d-flex align-items-center bg-white">
