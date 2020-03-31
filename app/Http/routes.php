@@ -11,7 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    //return view('welcome');
-    return view('home');
+/*Route::get('/', function () {
+    return view('welcome');
+});*/
+
+//*Modulos de Portal*/
+Route::group(['namespace' => 'Portal'], function(){
+	//*Modulo de Login*/
+	Route::get('/', 'inicioController@inicio');
+});
+
+//*Modulos de CMS*/
+Route::group(['namespace' => 'Cms'], function(){
+	//*Modulo de Login*/
+	Route::get('cms', 'autenticarController@login');
+	Route::post('cms/autenticar', 'autenticarController@validar'); // Verificar datos
+	Route::get('cms/autenticar', 'autenticarController@salir'); // Finalizar sesión
+	Route::post('cms/autenticar/recuperar', 'autenticarController@recuperar'); // Recuperar Password
+	Route::get('cms/inicio', 'panelController@inicio');
 });
