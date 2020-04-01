@@ -70,7 +70,7 @@
                     <div class="block-content">
                         <i class="fa fa-user-tie fa-2x text-muted"></i>
                         <p class="mt-3 mb-0 font-w600 font-size-lg">
-                            John Doe
+                            {{ $usuario->nb_usuario }}
                         </p>
                     </div>
                 </div>
@@ -78,8 +78,20 @@
                     <div class="col-sm-8 col-xl-6">
                         <form class="js-validation-lock" action="{{ url('/cms/recuperar/cambiar') }}" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <div class="form-group py-3">
-                                <input type="password" class="form-control form-control-lg form-control-alt" id="lock-password" name="lock-password" placeholder="Password..">
+                            <input type="hidden" name="token" value="{{ $llave }}">
+                            <div class="py-3">
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-lg form-control-alt {!! $errors->has('password') ? 'is-invalid' : '' !!}" {!! $errors->has('password') ? 'aria-describedby="password-error" aria-invalid="true"' : '' !!} id="password" name="password" placeholder="Contraseña..">
+                                    @if( $errors->has('password') )
+                                        <div id="password-error" class="invalid-feedback animated fadeIn">{{ $errors->first('password') }}</div>
+                                    @endif
+                                    </div>
+                                    <div class="form-group">
+                                    <input type="password" class="form-control form-control-lg form-control-alt {!! $errors->has('password_confirmation') ? 'is-invalid' : '' !!}" {!! $errors->has('password_confirmation') ? 'aria-describedby="password_confirmation-error" aria-invalid="true"' : '' !!} id="password_confirmation" name="password_confirmation" placeholder="Confirmar Contraseña..">
+                                    @if( $errors->has('password_confirmation') )
+                                        <div id="password_confirmation-error" class="invalid-feedback animated fadeIn">{{ $errors->first('password_confirmation') }}</div>
+                                    @endif
+                                </div>
                             </div>
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-block btn-hero-lg btn-hero-danger">
