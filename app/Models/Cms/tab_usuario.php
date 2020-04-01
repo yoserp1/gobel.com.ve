@@ -60,6 +60,11 @@ class tab_usuario extends Model implements AuthenticatableContract,
 		"rol"    => "required|integer",
 	);
 
+	public static $validarPass = array(
+		"contraseña"  => "required|confirmed|alpha_dash|min:6|max:30",
+		"contraseña_confirmation" => "required|alpha_dash|min:6|max:30"
+	);
+
 	public static $validarContrasena = array(
 		"valido" => "required|in:1",
 		"contraseña_actual" => "required|alpha_dash|min:3|max:30",

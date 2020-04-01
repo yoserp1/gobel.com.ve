@@ -6,7 +6,6 @@ use portal\Models\Cms\tab_usuario;
 use View;
 use Redirect;
 use Validator;
-use Input;
 use Response;
 use Crypt;
 use Session;
@@ -133,5 +132,73 @@ class passwordController extends Controller
 			]);
 		}
     }
+
+    /**
+	* Confirm a user's email address.
+	*
+	* @param  string $token
+	* @return mixed
+	*/
+	public function guardar( Request $request)
+	{
+		if (tab_usuario::where('codigo_confirmacion', '=', $request->token )->exists()) {
+
+			$validador = Validator::make($request->all(), tab_usuario::$validarPass);
+			if ($validador->fails()) {
+			    	return Redirect::back()->withErrors($validador)->withInput();
+            }
+            
+            DB::beginTransaction();
+            try {
+
+			$usuario_account = tab_usuario::where('codigo_confirmacion', '=', $request->token)->first();
+
+			$usuario = tab_usuario::find($usuario_account->id);
+			$usuario->da_password = bcrypt($request->contraseña_confirmation);
+			$usuario->codigo_confirmacion = null;
+            $usuario->save();
+            
+            DB::commit();
+
+            /*$email = $usuario->email;
+            $name = $usuario->username;
+
+                try{
+                    Mail::send('emails.cambio', array('pass' => $request->contraseña_confirmation, 'usuario' => $usuario ), 
+                    function($message) use ($email, $name){
+                            $message->to($email, $name)->subject('Mi Pana - CAMBIO DE CONTRASEÑA');
+                        }
+                    );
+                }catch(\Exception $e){
+                    return Redirect::back()->withErrors([
+                        'da_mensaje' => 'Hubo un error al enviar el correo Electronico. Intente de Nuevo.',
+                    ]);
+                    /*return Redirect::back()->withErrors([
+                        'da_mensaje' => array('ERROR ('.$e->getCode().'):'=> $e->getMessage())
+                    ]);*/
+
+                //}
+
+                Session::flash('msg', 'Contraseña cambiada con exito!');
+                return Redirect::to('/cms');
+            
+            }catch (\Illuminate\Database\QueryException $e)
+            {
+            DB::rollback();
+                /*return Redirect::back()->withErrors([
+                    'da_mensaje' => 'Error en la transaccion. Intente de Nuevo',
+                ]);*/
+                return Redirect::back()->withErrors([
+                    'done' => array('ERROR ('.$e->getCode().'):'=> $e->getMessage())
+                ]);
+            }
+
+		}else{
+			return Redirect('/')->withErrors([
+				'da_mensaje' => array('ERROR:'=> 'Error: El codigo de verificacion no existe!')
+			]);
+		}
+
+	}
 	
 }
