@@ -3,6 +3,7 @@
 namespace portal\Http\Controllers\Cms;
 //*******agregar esta linea******//
 use portal\Models\Cms\tab_usuario;
+use portal\Models\Cms\tab_portal;
 use Auth;
 use View;
 use Redirect;
@@ -88,22 +89,16 @@ class autenticarController extends Controller
 		if ($this->auth->attempt(['da_login' => $request->usuario, 'password' => $request->contraseña, 'in_activo' => TRUE]))
 		{
 
-			$data = tab_usuario::select('tab_usuario.id', 'id_tab_rol', 'nb_usuario', 'da_login', 'da_password', 'id_tab_empresa', 'nb_empresa', 'de_siglas')
-			->Join('tab_empresa as t01', 't01.id', '=', 'tab_usuario.id_tab_empresa')
+			$data = tab_usuario::select('tab_usuario.id', 'nb_usuario', 'da_login', 'da_password')
 			->where('tab_usuario.id', '=', Auth::user()->id)
 			->where('tab_usuario.in_activo', '=', TRUE)
 			->first();
   
-			$credencial = tab_privilegio_menu::join('tab_privilegio as t01','t01.id','=','tab_privilegio_menu.id_tab_privilegio')
-			->join('tab_menu as t02','t02.id','=','t01.id_tab_menu')
-			->join('tab_rol_menu as t03','t03.id','=','tab_privilegio_menu.id_tab_rol_menu')
-			->select('de_privilegio', DB::raw("tab_privilegio_menu.in_activo as in_habilitado"))
-			->where('id_tab_rol', '=', $data->id_tab_rol)->get()->toArray();
+			$portal = tab_portal::select('id')
+			->where('id', '=', 1)->get()->toArray();
   
-			Session::put('usuario', $data->id);
-			Session::put('rol', $data->id_tab_rol);
-			Session::put('empresa', $data);
-			Session::put( array('credencial' => $credencial));
+			Session::put('usuario', $data);
+			Session::put('portal', $portal);
 
 			return redirect('/cms/inicio');
 		}
