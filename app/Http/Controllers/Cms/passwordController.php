@@ -12,6 +12,7 @@ use Session;
 use DB;
 use Mail;
 use Auth;
+use Config;
 //*******************************//
 use Illuminate\Http\Request;
 
@@ -63,20 +64,22 @@ class passwordController extends Controller
             try {
  
              $usuario = tab_usuario::where('da_email', $request->email)->first();
-             $email = $request->email;
+             $email = $usuario->da_email;
              $name = $usuario->nb_usuario;
- 
+
              $cuenta = tab_usuario::find($usuario->id);
              $cuenta->codigo_confirmacion = $codigo_confirmacion = str_random(30);
              $cuenta->save();
  
-             DB::commit();
+             //DB::commit();
 
             try{
-			    Mail::send('emails.password', array('codigo_confirmacion' =>$codigo_confirmacion, 'usuario' => $usuario ), 
-				function($message) use ($email, $name){
-				       //$message->from('no-reply@sisprot.com', 'SISPROT');
-				       $message->to($email, $name)->subject('CMSmix - RECUPERACION DE CONTRASEÑA');
+			    Mail::send(
+                    'emails.password', array('codigo_confirmacion' =>$codigo_confirmacion, 'usuario' => $name ), 
+				    function($message) use ($email, $name){
+                        $message->sender('noreply@test.com');
+                        //$message->from(Config::get('mail.from.address'), Config::get('mail.from.name'));
+				        $message->to($email, $name)->subject('CMSmix - RECUPERACION DE CONTRASEÑA');
 				    }
 				);
 			}catch(\Exception $e){
@@ -84,12 +87,14 @@ class passwordController extends Controller
                     'da_mensaje' => 'Hubo un error al enviar el correo Electronico. Intente de Nuevo.',
                 ]);*/
                 return Redirect::back()->withErrors([
-                    'da_mensaje' => array('ERROR ('.$e->getCode().'):'=> $e->getMessage())
+                    'da_mensaje' => $e->getMessage()
                 ]);
-			}
+            }
+            
+            DB::commit();
 
             Session::flash('msg', 'Por favor, consulta tu email para link de recuperacion de contraseña.');
-            return Redirect::to('/');
+            return Redirect::to('/cms');
             
         }catch (\Illuminate\Database\QueryException $e)
         {
@@ -157,27 +162,31 @@ class passwordController extends Controller
 			$usuario->da_password = bcrypt($request->contraseña_confirmation);
 			$usuario->codigo_confirmacion = null;
             $usuario->save();
-            
-            DB::commit();
 
-            /*$email = $usuario->email;
-            $name = $usuario->username;
+            $email = $usuario_account->da_email;
+            $name = $usuario_account->nb_usuario;
+            $pass = $request->contraseña_confirmation;
 
                 try{
-                    Mail::send('emails.cambio', array('pass' => $request->contraseña_confirmation, 'usuario' => $usuario ), 
-                    function($message) use ($email, $name){
-                            $message->to($email, $name)->subject('Mi Pana - CAMBIO DE CONTRASEÑA');
+                    Mail::send(
+                        'emails.cambio', array('pass' => $pass, 'usuario' => $usuario_account ), 
+                        function($message) use ($email, $name){
+                            $message->sender('noreply@test.com');
+                            //$message->from(Config::get('mail.from.address'), Config::get('mail.from.name'));
+                            $message->to($email, $name)->subject('CMSmix - CAMBIO DE CONTRASEÑA');
                         }
                     );
                 }catch(\Exception $e){
-                    return Redirect::back()->withErrors([
-                        'da_mensaje' => 'Hubo un error al enviar el correo Electronico. Intente de Nuevo.',
-                    ]);
                     /*return Redirect::back()->withErrors([
-                        'da_mensaje' => array('ERROR ('.$e->getCode().'):'=> $e->getMessage())
+                        'da_mensaje' => 'Hubo un error al enviar el correo Electronico. Intente de Nuevo.',
                     ]);*/
+                    return Redirect::back()->withErrors([
+                        'da_mensaje' => $e->getMessage()
+                    ]);
 
-                //}
+                }
+
+                DB::commit();
 
                 Session::flash('msg', 'Contraseña cambiada con exito!');
                 return Redirect::to('/cms');

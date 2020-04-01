@@ -88,6 +88,14 @@
                             </div>
                         @endif
 
+                        @if( $errors->has('da_mensaje') )
+                            <div class="alert alert-danger d-flex align-items-center justify-content-between" role="alert">
+                                <div class="flex-fill mr-3">
+                                    <p class="mb-0">{{ $errors->first('da_mensaje') }}</p>
+                                </div>
+                            </div>
+                        @endif
+
                         <form class="js-validation-lock" action="{{ url('/cms/recuperar/cambiar') }}" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="token" value="{{ $llave }}">
