@@ -37,7 +37,7 @@
         <script>window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};</script>
     </head>
     <body>
-        <div id="page-container" class="sidebar-o enable-page-overlay side-scroll page-header-fixed page-header-dark main-content-narrow">
+        <div id="page-container" class="sidebar-o enable-page-overlay side-scroll page-header-fixed page-header-dark main-content-narrow enable-cookies">
             @include('layouts.side_overlay')
             @include('layouts.sidebar')
             @include('layouts.header')
