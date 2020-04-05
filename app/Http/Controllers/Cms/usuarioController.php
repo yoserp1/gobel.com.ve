@@ -51,40 +51,44 @@ class usuarioController extends Controller
       $valido = Hash::check( $request->get("contraseña_actual"), $contraseña_actual->da_password);
 
       $datos = array(
-        'contraseña_actual' => $valido,
+        'nombre' => $request->get("nombre"),
+        'correo' => $request->get("correo"),
+        'valido' => $valido,
         'contraseña_actual' => $request->get("contraseña_actual"),
-        'clave_nueva' => $request->get("clave_nueva"),
-        'clave_nueva_confirmation' => $request->get("clave_nueva_confirmation")
+        'contraseña' => $request->get("contraseña"),
+        'contraseña_confirmation' => $request->get("contraseña_confirmation")
       );
 
       $mensajes = array(
-        'contraseña_actual.in'=>'La Contraseña ingresada no coincide.'
+        'valido.in'=>'La Contraseña ingresada no coincide.'
       );
 
-      //dd($request);
-
       $validador = Validator::make($datos , tab_usuario::$validarContrasena, $mensajes);
+
       if ($validador->fails()) {
-        return Redirect::back()->withErrors( $validador)->withInput( $request->except("password"));
+        Session::flash('overlay_activo', 'side-overlay-o');
+        return Redirect::back()->withErrors( $validador)->withInput( $request->all());
       }
 
         DB::beginTransaction();
         try {
 
             $tabla = tab_usuario::find( Auth::user()->id);
-            $tabla->da_password = bcrypt($request->get("clave_nueva_confirmation"));
+            $tabla->nb_usuario = $request->get("nombre");
+            $tabla->da_email = $request->get("correo");
+            $tabla->da_password = bcrypt($request->get("contraseña_confirmation"));
             $tabla->save();
 
             DB::commit();
 
-            Session::flash('msg', 'Contraseña cambiada con exito!');
+            Session::flash('msg_side_overlay', 'Contraseña cambiada con exito!');
             return Redirect::to('/cms/inicio');
 
         }catch (\Illuminate\Database\QueryException $e){
 
             DB::rollback();
             return Redirect::back()->withErrors([
-                'da_mensaje' => $e->getMessage()
+                'da_mensaje_side_overlay' => $e->getMessage()
             ]);
 
         }

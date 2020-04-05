@@ -10,6 +10,21 @@
             <div class="block-content block-content-full">
 
                 @if (count($errors) > 0)
+                    @if (session()->has('overlay_activo'))
+                        @section('js_side_overlay')
+                            <!-- Page JS Code -->
+                            <script>
+                                /*$("#page-container").addClass("side-overlay-o");*/
+                                jQuery(function(){ Dashmix.layout('side_overlay_open'); });
+                            </script>
+                        @endsection
+                    @endif
+                    @section('js_notificacion')
+                        <!-- Page JS Code -->
+                        <script>
+                            jQuery(function(){ Dashmix.helpers('notify', {type: 'danger', icon: 'fa fa-times-circle mr-1', align: 'center', message: 'Hay problemas con su validacion!'}); });
+                        </script>
+                    @endsection
                     <div class="alert alert-danger d-flex align-items-center justify-content-between" role="alert">
                         <div class="flex-fill mr-3">
                             <p class="mb-0">Hay problemas con su validacion!</p>
@@ -20,21 +35,27 @@
                     </div>
                 @endif
 
-                @if( $errors->has('da_mensaje') )
+                @if( $errors->has('da_mensaje_side_overlay') )
                     <div class="alert alert-danger d-flex align-items-center justify-content-between" role="alert">
                         <div class="flex-fill mr-3">
-                            <p class="mb-0">{{ $errors->first('da_mensaje') }}</p>
+                            <p class="mb-0">{{ $errors->first('da_mensaje_side_overlay') }}</p>
                         </div>
                     </div>
                 @endif
 
-                @if (session()->has('msg'))
+                @if (session()->has('msg_side_overlay'))
+                    @section('js_notificacion')
+                        <!-- Page JS Code -->
+                        <script>
+                            jQuery(function(){ Dashmix.helpers('notify', {type: 'success', icon: 'fa fa-check mr-1', align: 'center', message: '{{ session('msg_side_overlay') }}'}); });
+                        </script>
+                    @endsection
                     <div class="alert alert-success d-flex align-items-center" role="alert">
                         <div class="flex-00-auto">
                             <i class="fa fa-fw fa-check"></i>
                         </div>
                         <div class="flex-fill ml-3">
-                            <p class="mb-0">{{ session('msg') }}</p>
+                            <p class="mb-0">{{ session('msg_side_overlay') }}</p>
                         </div>
                     </div>
                 @endif
@@ -44,12 +65,18 @@
                     <input type="text" readonly class="form-control" id="staticEmail" value="{{ Auth::user()->da_login }}">
                 </div>
                 <div class="form-group">
-                    <label for="so-profile-name">Nombre</label>
-                    <input type="text" class="form-control" id="so-profile-name" name="so-profile-name" value="{{ Auth::user()->nb_usuario }}">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control {!! $errors->has('nombre') ? 'is-invalid' : '' !!}" id="nombre" name="nombre" value="{{ Auth::user()->nb_usuario }}" {!! $errors->has('nombre') ? 'aria-describedby="nombre-error" aria-invalid="true"' : '' !!} placeholder="Nombre">
+                    @if( $errors->has('nombre') )
+                        <div id="nombre-error" class="invalid-feedback animated fadeIn">{{ $errors->first('nombre') }}</div>
+                    @endif
                 </div>
                 <div class="form-group">
-                    <label for="so-profile-email">Correo</label>
-                    <input type="email" class="form-control" id="so-profile-email" name="so-profile-email" value="{{ Auth::user()->da_email }}">
+                    <label for="correo">Correo</label>
+                    <input type="email" class="form-control {!! $errors->has('correo') ? 'is-invalid' : '' !!}" id="correo" name="correo" value="{{ Auth::user()->da_email }}" {!! $errors->has('correo') ? 'aria-describedby="correo-error" aria-invalid="true"' : '' !!} placeholder="Correo">
+                    @if( $errors->has('correo') )
+                        <div id="correo-error" class="invalid-feedback animated fadeIn">{{ $errors->first('correo') }}</div>
+                    @endif
                 </div>
             </div>
             <!-- END Personal -->

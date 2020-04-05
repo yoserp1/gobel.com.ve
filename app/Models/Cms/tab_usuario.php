@@ -66,6 +66,8 @@ class tab_usuario extends Model implements AuthenticatableContract,
 	);
 
 	public static $validarContrasena = array(
+		"nombre"    => "required|alpha_dash|min:5|max:30",
+		"correo"    => "required|email",
 		"valido" => "required|in:1",
 		"contraseña_actual" => "required|alpha_dash|min:3|max:30",
 		"contraseña" => "required|alpha_dash|min:3|max:30|confirmed",

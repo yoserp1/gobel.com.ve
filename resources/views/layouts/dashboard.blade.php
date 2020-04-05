@@ -55,6 +55,9 @@
         <script src="{{ asset('/assets/js/dashmix.core.min.js') }}"></script>
         <script src="{{ asset('/assets/js/dashmix.app.min.js') }}"></script>
         <!-- Laravel Scaffolding JS -->
+        <script src="{{ asset('/assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
         @yield('js_after')
+        @yield('js_side_overlay')
+        @yield('js_notificacion')
     </body>
 </html>
