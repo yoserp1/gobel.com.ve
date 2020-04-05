@@ -59,5 +59,6 @@
         @yield('js_after')
         @yield('js_side_overlay')
         @yield('js_notificacion')
+        @yield('js_notificacion_lista')
     </body>
 </html>

@@ -139,6 +139,19 @@
             </div>
             <!-- END Notifications Dropdown -->
 
+            @section('js_notificacion_lista')
+                <script>
+
+                $("#notificacion_lista").html('Por Favor Espere...');
+                $.get("{{ URL::to('cms/notificacion') }}", { }, function(data){
+                    $.each(data.data, function(i,f) {
+                        $("#notificacion_lista").append('Listo...');
+                    });
+                });
+
+                </script>
+            @endsection
+
             <!-- Toggle Side Overlay -->
             <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
             <button type="button" class="btn btn-dual" data-toggle="layout" data-action="side_overlay_toggle">
