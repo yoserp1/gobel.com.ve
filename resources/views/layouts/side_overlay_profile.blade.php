@@ -4,20 +4,20 @@
         <div class="block mb-0">
             <!-- Personal -->
             <div class="block-content block-content-sm block-content-full bg-body">
-                <span class="text-uppercase font-size-sm font-w700">Personal</span>
+                <span class="text-uppercase font-size-sm font-w700">Datos</span>
             </div>
             <div class="block-content block-content-full">
                 <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" readonly class="form-control" id="staticEmail" value="Admin">
+                    <label>Usuario</label>
+                    <input type="text" readonly class="form-control" id="staticEmail" value="{{ Auth::user()->da_login }}">
                 </div>
                 <div class="form-group">
-                    <label for="so-profile-name">Name</label>
-                    <input type="text" class="form-control" id="so-profile-name" name="so-profile-name" value="George Taylor">
+                    <label for="so-profile-name">Nombre</label>
+                    <input type="text" class="form-control" id="so-profile-name" name="so-profile-name" value="{{ Auth::user()->nb_usuario }}">
                 </div>
                 <div class="form-group">
-                    <label for="so-profile-email">Email</label>
-                    <input type="email" class="form-control" id="so-profile-email" name="so-profile-email" value="g.taylor@example.com">
+                    <label for="so-profile-email">Correo</label>
+                    <input type="email" class="form-control" id="so-profile-email" name="so-profile-email" value="{{ Auth::user()->da_email }}">
                 </div>
             </div>
             <!-- END Personal -->
@@ -75,7 +75,7 @@
             <div class="block-content row justify-content-center border-top">
                 <div class="col-9">
                     <button type="submit" class="btn btn-block btn-hero-primary">
-                        <i class="fa fa-fw fa-save mr-1"></i> Save
+                        <i class="fa fa-fw fa-save mr-1"></i> Guardar
                     </button>
                 </div>
             </div>

@@ -34,6 +34,7 @@
                         Opciones de Usuario
                     </div>
                     <div class="p-2">
+{{--
                         <a class="dropdown-item" href="be_pages_generic_profile.html">
                             <i class="far fa-fw fa-user mr-1"></i> Profile
                         </a>
@@ -45,11 +46,11 @@
                             <i class="far fa-fw fa-file-alt mr-1"></i> Invoices
                         </a>
                         <div role="separator" class="dropdown-divider"></div>
-
+--}}
                         <!-- Toggle Side Overlay -->
                         <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
                         <a class="dropdown-item" href="javascript:void(0)" data-toggle="layout" data-action="side_overlay_toggle">
-                            <i class="far fa-fw fa-building mr-1"></i> Settings
+                            <i class="far fa-fw fa-user mr-1"></i> Perfil
                         </a>
                         <!-- END Side Overlay -->
 

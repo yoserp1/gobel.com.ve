@@ -12,8 +12,8 @@
 
                 <!-- User Info -->
                 <div class="ml-2">
-                    <a class="text-white font-w600" href="be_pages_generic_profile.html">George Taylor</a>
-                    <div class="text-white-75 font-size-sm">Full Stack Developer</div>
+                    <a class="text-white font-w600" href="be_pages_generic_profile.html">{{ Auth::user()->nb_usuario }}</a>
+                    <div class="text-white-75 font-size-sm">{{ Auth::user()->da_login }}</div>
                 </div>
                 <!-- END User Info -->
 
