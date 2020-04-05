@@ -4,6 +4,7 @@ namespace portal\Http\Controllers\Cms;
 //*******agregar esta linea******//
 use View;
 use DB;
+use Auth;
 //*******************************//
 use Illuminate\Http\Request;
 
@@ -19,6 +20,7 @@ class panelController extends Controller
     */
     public function __construct()
     {
+        $this->middleware('auth');
         //$this->middleware('optimizar');
     }
 
