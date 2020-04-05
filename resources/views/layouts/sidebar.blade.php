@@ -52,40 +52,26 @@
         <ul class="nav-main">
             <li class="nav-main-item">
                 <a class="nav-main-link" href="{{ url('/cms/inicio') }}">
-                    <i class="nav-main-link-icon si si-cursor"></i>
-                    <span class="nav-main-link-name">Inicio</span>
-                    <span class="nav-main-link-badge badge badge-pill badge-success">5</span>
+                    <i class="nav-main-link-icon si si-grid"></i>
+                    <span class="nav-main-link-name">INICIO</span>
                 </a>
             </li>
             <li class="nav-main-item">
                 <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                     <i class="nav-main-link-icon si si-settings"></i>
-                    <span class="nav-main-link-name">Opciones</span>
+                    <span class="nav-main-link-name">CONFIGURACION</span>
                 </a>
                 <ul class="nav-main-submenu">
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="be_blocks_styles.html">
-                            <span class="nav-main-link-name">Styles</span>
+                        <a class="nav-main-link" href="{{ url('/cms/portal') }}">
+                            <i class="nav-main-link-icon si si-cursor"></i>
+                            <span class="nav-main-link-name">Portal</span>
                         </a>
                     </li>
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="be_blocks_options.html">
-                            <span class="nav-main-link-name">Options</span>
-                        </a>
-                    </li>
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" href="be_blocks_forms.html">
-                            <span class="nav-main-link-name">Forms</span>
-                        </a>
-                    </li>
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" href="be_blocks_themed.html">
-                            <span class="nav-main-link-name">Themed</span>
-                        </a>
-                    </li>
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" href="be_blocks_api.html">
-                            <span class="nav-main-link-name">API</span>
+                        <a class="nav-main-link" href="{{ url('/cms/usuario') }}">
+                            <i class="nav-main-link-icon si si-users"></i>
+                            <span class="nav-main-link-name">Usuarios</span>
                         </a>
                     </li>
                 </ul>

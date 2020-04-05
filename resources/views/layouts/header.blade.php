@@ -14,7 +14,7 @@
             <!-- Open Search Section -->
             <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
             <button type="button" class="btn btn-dual" data-toggle="layout" data-action="header_search_on">
-                <i class="fa fa-fw fa-search"></i> <span class="ml-1 d-none d-sm-inline-block">Search</span>
+                <i class="fa fa-fw fa-search"></i> <span class="ml-1 d-none d-sm-inline-block">Buscar</span>
             </button>
             <!-- END Open Search Section -->
         </div>
@@ -26,7 +26,7 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn btn-dual" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-fw fa-user d-sm-none"></i>
-                    <span class="d-none d-sm-inline-block">{{ Auth::user()->da_login }}</span>
+                    <span class="d-none d-sm-inline-block">{{ Auth::user()->nb_usuario }}</span>
                     <i class="fa fa-fw fa-angle-down ml-1 d-none d-sm-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="page-header-user-dropdown">
@@ -153,7 +153,7 @@
     <!-- Header Search -->
     <div id="page-header-search" class="overlay-header bg-primary">
         <div class="content-header">
-            <form class="w-100" action="be_pages_generic_search.html" method="POST">
+            <form class="w-100" action="{{ url('/cms/inicio') }}" method="POST">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
@@ -161,7 +161,7 @@
                             <i class="fa fa-fw fa-times-circle"></i>
                         </button>
                     </div>
-                    <input type="text" class="form-control border-0" placeholder="Search or hit ESC.." id="page-header-search-input" name="page-header-search-input">
+                    <input type="text" class="form-control border-0" placeholder="Buscar..." id="page-header-search-input" name="page-header-search-input">
                 </div>
             </form>
         </div>

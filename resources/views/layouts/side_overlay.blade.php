@@ -5,14 +5,14 @@
         <div class="bg-primary-op">
             <div class="content-header">
                 <!-- User Avatar -->
-                <a class="img-link mr-1" href="be_pages_generic_profile.html">
+                <a class="img-link mr-1" href="javascript:void(0)">
                     <img class="img-avatar img-avatar48" src="{{ asset('assets/media/avatars/avatar0.jpg') }}" alt="">
                 </a>
                 <!-- END User Avatar -->
 
                 <!-- User Info -->
                 <div class="ml-2">
-                    <a class="text-white font-w600" href="be_pages_generic_profile.html">{{ Auth::user()->nb_usuario }}</a>
+                    <a class="text-white font-w600" href="javascript:void(0)">{{ Auth::user()->nb_usuario }}</a>
                     <div class="text-white-75 font-size-sm">{{ Auth::user()->da_login }}</div>
                 </div>
                 <!-- END User Info -->
