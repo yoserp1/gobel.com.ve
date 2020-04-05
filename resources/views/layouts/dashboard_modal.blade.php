@@ -25,4 +25,24 @@
 </div>
 <!-- END Pop In Block Modal -->
 
+<!-- Bootstrap Toasts -->
+<div style="position: fixed; top: 3rem; right: 3rem; z-index: 9999999;">
+    <!-- Toast Aviso -->
+    <div id="toast-aviso" class="toast fade hide" data-delay="4000" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="fa fa-info-circle text-success mr-2"></i>
+            <strong class="mr-auto">Aviso</strong>
+            <small class="text-muted">Justo Ahora</small>
+            <button type="button" class="ml-2 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            {{ session('msg_side_overlay') }}
+        </div>
+    </div>
+    <!-- END Toast Aviso -->
+</div>
+<!-- END Bootstrap Toasts -->
+
 @yield('modal_after')

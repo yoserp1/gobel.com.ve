@@ -47,7 +47,8 @@
                     @section('js_notificacion')
                         <!-- Page JS Code -->
                         <script>
-                            jQuery(function(){ Dashmix.helpers('notify', {type: 'success', icon: 'fa fa-check mr-1', align: 'center', message: '{{ session('msg_side_overlay') }}'}); });
+                            /*jQuery(function(){ Dashmix.helpers('notify', {type: 'success', icon: 'fa fa-check mr-1', align: 'center', message: '{{ session('msg_side_overlay') }}'}); });*/
+                            jQuery('#toast-aviso').toast('show');
                         </script>
                     @endsection
                     <div class="alert alert-success d-flex align-items-center" role="alert">
