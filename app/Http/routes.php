@@ -34,4 +34,6 @@ Route::group(['namespace' => 'Cms'], function(){
 	Route::get('cms/inicio', 'panelController@inicio');
 	Route::post('cms/usuario/password', 'usuarioController@guardar');
 	Route::get('cms/inicio/notificacion', 'panelController@notificacion');
+	Route::get('cms/portal/editar', 'portalController@editar');
+	Route::post('cms/portal/guardar/{id}', 'portalController@guardar');
 });
