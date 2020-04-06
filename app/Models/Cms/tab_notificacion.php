@@ -15,11 +15,10 @@ class tab_notificacion extends Model
     //Todos los modelos deben extender la clase Eloquent
     protected $table = 'tab_notificacion';
 
-    protected $appends = ['TimeAgo'];
-
-    public function getTimeAgoAttribute()
+    protected function getTimeAgo($date)
     {
         Carbon::setLocale(App::getLocale());
-        return Carbon::parse($this->created_at)->diffForHumans();
+        return Carbon::parse($date)->diffForHumans();
     }
+
 }

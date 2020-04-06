@@ -67,14 +67,13 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn btn-dual" id="page-header-notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-fw fa-bell"></i>
-                    <span class="badge badge-secondary badge-pill">5</span>
+                    <span class="badge badge-secondary badge-pill"><div  id="notificacion_total">0</div></span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0" aria-labelledby="page-header-notifications-dropdown">
                     <div class="bg-primary-darker rounded-top font-w600 text-white text-center p-3">
                         Notificaciones
                     </div>
-                    <ul class="nav-items my-2">
-                        <div  id="notificacion_lista">
+                    <ul class="nav-items my-2" id="notificacion_lista">
                     </ul>
                     <div class="p-2 border-top">
                         <a class="btn btn-light btn-block text-center" href="javascript:void(0)">
@@ -89,12 +88,13 @@
                 <script>
 
                 $.get("{{ URL::to('cms/notificacion') }}", { }, function(data){
+                    $("#notificacion_total").html(data.total);
                     $.each(data.data, function(i,f) {
                         $("#notificacion_lista").append(
                         '<li>'+ 
                             '<a class="text-dark media py-2" href="javascript:void(0)">'+ 
                                 '<div class="mx-3">'+ 
-                                    '<i class="fa fa-fw fa-exclamation-circle text-warning"></i>'+ 
+                                    '<i class="fa fa-fw ' + f.de_icono + '"></i>'+ 
                                 '</div>'+ 
                                 '<div class="media-body font-size-sm pr-2">'+ 
                                     '<div class="font-w600">' + f.de_notificacion + '</div>'+ 

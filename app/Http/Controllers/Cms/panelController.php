@@ -45,13 +45,27 @@ class panelController extends Controller
      */
     public function notificacion(Request $request)
     {
-        $response['success']  = 'true';
-        $response['cantidad']  = 10;
-        $response['data']  = tab_notificacion::select('id','de_notificacion')
+
+        $tab_notificacion = tab_notificacion::select( 'id', 'de_notificacion', 'created_at', 'de_icono')
         ->where('id_tab_usuario', '=', Auth::user()->id)
-        ->where('in_activo', '=', true)
-        ->orderby('id','ASC')
-        ->limit(5)->get()->toArray();
+        ->where('in_activo', '=', true);
+
+        $response['success']  = 'true';
+        $response['total']  = $tab_notificacion->count();
+
+        $tab_notificacion = $tab_notificacion->orderby('id','DESC')->limit(5)->get()->toArray();
+
+        foreach($tab_notificacion as $notificacion) {
+            $registros[] = array(
+                "id"  => trim($notificacion['id']),
+                "de_notificacion"  => trim($notificacion['de_notificacion']),
+                "de_icono"  => trim($notificacion['de_icono']),
+                "TimeAgo"  => trim(tab_notificacion::getTimeAgo($notificacion['created_at']))
+            );
+        }
+
+        $response['data']  = $registros;
+
 		return Response::json($response, 200);
     }
 }
