@@ -3,6 +3,7 @@
 namespace portal\Http\Controllers\Cms;
 //*******agregar esta linea******//
 use portal\Models\Cms\tab_usuario;
+use portal\Models\Cms\tab_notificacion;
 use View;
 use Redirect;
 use Validator;
@@ -70,6 +71,13 @@ class passwordController extends Controller
              $cuenta = tab_usuario::find($usuario->id);
              $cuenta->codigo_confirmacion = $codigo_confirmacion = str_random(30);
              $cuenta->save();
+
+             $tab_notificacion = new tab_notificacion;
+             $tab_notificacion->id_tab_usuario = $usuario->id;
+             $tab_notificacion->de_notificacion = 'Recuperar contraseña de usuario';
+             $tab_notificacion->ip_cliente = $request->ip();
+             $tab_notificacion->de_icono = 'fa-envelope text-info';
+             $tab_notificacion->save();
  
              //DB::commit();
 
@@ -162,6 +170,13 @@ class passwordController extends Controller
 			$usuario->da_password = bcrypt($request->contraseña_confirmation);
 			$usuario->codigo_confirmacion = null;
             $usuario->save();
+
+            $tab_notificacion = new tab_notificacion;
+            $tab_notificacion->id_tab_usuario = $usuario->id;
+            $tab_notificacion->de_notificacion = 'Actualización de contraseña de usuario';
+            $tab_notificacion->ip_cliente = $request->ip();
+            $tab_notificacion->de_icono = 'fa-unlock-alt text-info';
+            $tab_notificacion->save();
 
             $email = $usuario_account->da_email;
             $name = $usuario_account->nb_usuario;

@@ -87,7 +87,7 @@
             @section('js_notificacion_lista')
                 <script>
 
-                $.get("{{ URL::to('cms/notificacion') }}", { }, function(data){
+                $.get("{{ URL::to('cms/inicio/notificacion') }}", { }, function(data){
                     $("#notificacion_total").html(data.total);
                     $.each(data.data, function(i,f) {
                         $("#notificacion_lista").append(

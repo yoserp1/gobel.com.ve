@@ -3,6 +3,7 @@
 namespace portal\Http\Controllers\Cms;
 //*******agregar esta linea******//
 use portal\Models\Cms\tab_usuario;
+use portal\Models\Cms\tab_notificacion;
 use Validator;
 use View;
 use Auth;
@@ -78,6 +79,13 @@ class usuarioController extends Controller
             $tabla->da_email = $request->get("correo");
             $tabla->da_password = bcrypt($request->get("contraseña_confirmation"));
             $tabla->save();
+
+            $tab_notificacion = new tab_notificacion;
+            $tab_notificacion->id_tab_usuario = Auth::user()->id;
+            $tab_notificacion->de_notificacion = 'Actualización de datos de usuario';
+            $tab_notificacion->ip_cliente = $request->ip();
+            $tab_notificacion->de_icono = 'fa-address-card text-info';
+            $tab_notificacion->save();
 
             DB::commit();
 
