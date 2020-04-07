@@ -3,10 +3,13 @@
 namespace portal\Http\Controllers\Cms;
 //*******agregar esta linea******//
 use portal\Models\Cms\tab_portal;
+use portal\Models\Cms\tab_notificacion;
 use View;
 use DB;
+use Validator;
+use Redirect;
+use Session;
 use Auth;
-use Response;
 //*******************************//
 use Illuminate\Http\Request;
 
@@ -42,5 +45,54 @@ class portalController extends Controller
         return View::make('cms.portal.editar')->with([
             'data'  => $data
         ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function guardar(Request $request, $id = NULL)
+    {
+        DB::beginTransaction();
+
+        if($id!=''||$id!=null){
+
+            $validador = Validator::make( $request->all(), tab_portal::$validarEditar);
+            if ($validador->fails()) {
+                return Redirect::back()->withErrors( $validador)->withInput( $request->all());
+            }
+
+            try {
+
+                $tab_portal = tab_portal::find( $id);
+                $tab_portal->nb_portal = $request->get("titulo");
+                $tab_portal->save();
+    
+                $tab_notificacion = new tab_notificacion;
+                $tab_notificacion->id_tab_usuario = Auth::user()->id;
+                $tab_notificacion->de_notificacion = 'Actualización de datos del Portal';
+                $tab_notificacion->ip_cliente = $request->ip();
+                $tab_notificacion->de_icono = 'fa-laptop-code text-info';
+                $tab_notificacion->save();
+
+                DB::commit();
+
+                Session::flash('msg_side_overlay', 'Registro Editado con Exito!');
+                return Redirect::to('/cms/portal/editar');
+
+            }catch (\Illuminate\Database\QueryException $e)
+            {
+                DB::rollback();
+                return Redirect::back()->withErrors([
+                    'da_alert_form' => $e->getMessage()
+                ])->withInput( $request->all());
+            }
+
+        }else{
+
+        }
+
     }
 }

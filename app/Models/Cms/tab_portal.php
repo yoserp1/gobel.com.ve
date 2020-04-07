@@ -11,4 +11,9 @@ class tab_portal extends Model
 
     //Todos los modelos deben extender la clase Eloquent
     protected $table = 'tab_portal';
+
+    public static $validarEditar = array(
+        "titulo"    => "required"
+	);
+
 }

@@ -34,7 +34,9 @@
 <!-- Page Content -->
 <div class="content content-full content-boxed">
     <!-- New Post -->
-    <form action="{{ URL::to('cms/portal/guardar') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ URL::to('cms/portal/guardar').'/'.$data->id }}" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="id" value="{{ $data->id }}">
         <div class="block">
             <div class="block-header block-header-default">
                 <a class="btn btn-light" href="{{ URL::to('cms/inicio') }}">
@@ -50,9 +52,33 @@
             <div class="block-content">
                 <div class="row justify-content-center push">
                     <div class="col-md-10">
+
+                        {{--
+                        @if (count($errors) > 0)
+                            <div class="alert alert-danger d-flex align-items-center justify-content-between" role="alert">
+                                <div class="flex-fill mr-3">
+                                    <p class="mb-0">Hay problemas con su validacion!</p>
+                                </div>
+                                <div class="flex-00-auto">
+                                    <i class="fa fa-fw fa-times-circle"></i>
+                                </div>
+                            </div>
+                        @endif
+                        --}}
+                        @if( $errors->has('da_alert_form') )
+                        <div class="alert alert-danger d-flex align-items-center justify-content-between" role="alert">
+                            <div class="flex-fill mr-3">
+                                <p class="mb-0">{{ $errors->first('da_alert_form') }}</p>
+                            </div>
+                        </div>
+                        @endif
+
                         <div class="form-group">
-                            <label for="dm-post-edit-title">Title</label>
-                            <input type="text" class="form-control" id="dm-post-edit-title" name="dm-post-edit-title" placeholder="Enter a title.." value="An adventure of a lifetime">
+                            <label for="titulo">Titulo</label>
+                            <input type="text" class="form-control {!! $errors->has('titulo') ? 'is-invalid' : '' !!}" id="titulo" name="titulo" placeholder="Titulo..." value="{{ empty(old('titulo'))? $data->nb_portal : old('titulo') }}" {{ $errors->has('titulo') ? 'aria-describedby="titulo-error" aria-invalid="true"' : '' }}>
+                            @if( $errors->has('titulo') )
+                                <div id="titulo-error" class="invalid-feedback animated fadeIn">{{ $errors->first('titulo') }}</div>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label for="dm-post-edit-excerpt">Excerpt</label>
