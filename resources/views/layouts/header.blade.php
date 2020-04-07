@@ -11,12 +11,29 @@
             </button>
             <!-- END Toggle Sidebar -->
 
+            <!-- Website Dropdown -->
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn btn-dual" id="page-header-website-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-fw fa-home"></i>
+                    <span class="d-none d-sm-inline ml-1">Sitio Web</span>
+                </button>
+                <div class="dropdown-menu p-0" aria-labelledby="page-header-website-dropdown">
+                    <div class="p-2">
+                        <a class="dropdown-item mb-0" href="{{ URL::to('/') }}" target="_blank">
+                            <i class="fa fa-fw fa-globe mr-1"></i> Ver Sitio
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- END Website Dropdown -->
+            {{--
             <!-- Open Search Section -->
             <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
             <button type="button" class="btn btn-dual" data-toggle="layout" data-action="header_search_on">
                 <i class="fa fa-fw fa-search"></i> <span class="ml-1 d-none d-sm-inline-block">Buscar</span>
             </button>
             <!-- END Open Search Section -->
+            --}}
         </div>
         <!-- END Left Section -->
 
