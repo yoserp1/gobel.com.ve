@@ -19,11 +19,7 @@
     <!-- Partial Table -->
     <div class="block block-rounded block-bordered">
     <!-- New Post -->
-    @if(empty($data->id)) 
-        <form action="{{ URL::to('cms/usuario/guardar') }}" method="POST" enctype="multipart/form-data">
-	@else
-        <form action="{{ URL::to('cms/usuario/guardar').'/'.$data->id }}" method="POST" enctype="multipart/form-data">
-	@endif
+    <form action="{{ URL::to('cms/usuario/guardar') }}" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="block">
             <div class="block-header block-header-default">
@@ -63,21 +59,21 @@
 
                         <div class="form-group">
                             <label for="usuario">Usuario</label>
-                            <input type="text" class="form-control {!! $errors->has('usuario') ? 'is-invalid' : '' !!}" id="usuario" name="usuario" placeholder="Usuario..." value="{{ empty(old('usuario'))? $data->da_login : old('usuario') }}" {{ $errors->has('usuario') ? 'aria-describedby="usuario-error" aria-invalid="true"' : '' }}>
+                            <input type="text" class="form-control {!! $errors->has('usuario') ? 'is-invalid' : '' !!}" id="usuario" name="usuario" placeholder="Usuario..." value="{{ old('usuario') }}" {{ $errors->has('usuario') ? 'aria-describedby="usuario-error" aria-invalid="true"' : '' }}>
                             @if( $errors->has('usuario') )
                                 <div id="usuario-error" class="invalid-feedback animated fadeIn">{{ $errors->first('usuario') }}</div>
                             @endif
                         </div>
                         <div class="form-group">
                             <label for="nombre">Nombre de Usuario</label>
-                            <input type="text" class="form-control {!! $errors->has('nombre') ? 'is-invalid' : '' !!}" id="nombre" name="nombre" placeholder="Nombre..." value="{{ empty(old('nombre'))? $data->nb_usuario : old('nombre') }}" {{ $errors->has('nombre') ? 'aria-describedby="nombre-error" aria-invalid="true"' : '' }}>
+                            <input type="text" class="form-control {!! $errors->has('nombre') ? 'is-invalid' : '' !!}" id="nombre" name="nombre" placeholder="Nombre..." value="{{ old('nombre') }}" {{ $errors->has('nombre') ? 'aria-describedby="nombre-error" aria-invalid="true"' : '' }}>
                             @if( $errors->has('nombre') )
                                 <div id="nombre-error" class="invalid-feedback animated fadeIn">{{ $errors->first('nombre') }}</div>
                             @endif
                         </div>
                         <div class="form-group">
                             <label for="correo">E-mail</label>
-                            <input type="text" class="form-control {!! $errors->has('correo') ? 'is-invalid' : '' !!}" id="correo" name="correo" placeholder="E-mail..." value="{{ empty(old('correo'))? $data->da_email : old('correo') }}" {{ $errors->has('correo') ? 'aria-describedby="correo-error" aria-invalid="true"' : '' }}>
+                            <input type="text" class="form-control {!! $errors->has('correo') ? 'is-invalid' : '' !!}" id="correo" name="correo" placeholder="E-mail..." value="{{ old('correo') }}" {{ $errors->has('correo') ? 'aria-describedby="correo-error" aria-invalid="true"' : '' }}>
                             @if( $errors->has('correo') )
                                 <div id="correo-error" class="invalid-feedback animated fadeIn">{{ $errors->first('correo') }}</div>
                             @endif

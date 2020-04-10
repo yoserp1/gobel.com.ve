@@ -168,6 +168,20 @@ class usuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function nuevo()
+    {
+        $data = array( "id" => null);
+
+        return View::make('cms.usuario.nuevo')->with([
+            'data'  => $data
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function editar($id)
     {
         $data = tab_usuario::select( 'id', 'da_login', 'in_activo', 'nb_usuario', 'da_email')

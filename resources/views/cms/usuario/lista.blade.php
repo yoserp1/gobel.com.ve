@@ -39,6 +39,7 @@
                 <i class="fa fa-arrow-left mr-1"></i> Volver
             </a>
             <div class="block-options">
+                <button type="button" class="btn-block-option mr-2"><a href="{{ URL::to('cms/usuario/nuevo') }}"><i class="fa fa-plus mr-1"></i> Nuevo</a></button>
                 <button type="button" class="btn-block-option" data-toggle="block-option" data-action="fullscreen_toggle"></button>
                 <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
                     <i class="si si-refresh"></i>
@@ -110,6 +111,40 @@
                 @endforeach
                 </tbody>
             </table>
+
+            <nav aria-label="Classic Search Navigation">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="javascript:void(0)" tabindex="-1" aria-label="Previous">
+                            <span aria-hidden="true">
+                                <i class="fa fa-angle-double-left"></i>
+                            </span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item active">
+                        <a class="page-link" href="javascript:void(0)">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="javascript:void(0)">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="javascript:void(0)">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="javascript:void(0)">4</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="javascript:void(0)" aria-label="Next">
+                            <span aria-hidden="true">
+                                <i class="fa fa-angle-double-right"></i>
+                            </span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
         </div>
     </div>
     <!-- END Partial Table -->
