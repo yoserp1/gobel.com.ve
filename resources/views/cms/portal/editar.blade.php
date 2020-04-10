@@ -161,7 +161,7 @@
                                 <div class="custom-file">
                                     <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
                                     <input type="file" class="custom-file-input" id="shortcut_icon" name="shortcut_icon" data-toggle="custom-file-input">
-                                    <label class="custom-file-label" for="shortcut_icon">Seleccione favicon</label>
+                                    <label class="custom-file-label" for="shortcut_icon">Seleccione favicon...</label>
                                 </div>
                             </div>
                         </div>
