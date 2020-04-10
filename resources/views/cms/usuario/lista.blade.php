@@ -14,7 +14,7 @@
 
 @section('content')
 
-<!-- Hero -->
+<!-- Hero --><!--
 <div class="bg-body-light">
     <div class="content content-full">
         <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
@@ -27,7 +27,7 @@
             </nav>
         </div>
     </div>
-</div>
+</div>-->
 <!-- END Hero -->
 
 <!-- Page Content -->
@@ -46,6 +46,31 @@
             </div>
         </div>
         <div class="block-content">
+            
+        <form action="{{ url('/cms/usuario') }}" method="get">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <label>
+                        <select name="perPage" class="form-control">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="q" name="q" placeholder="Buscar...">
+                        <div class="input-group-append">
+                            <button type="submit" class="input-group-text">
+                                <i class="fa fa-fw fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <form>
+        
             <table class="table table-bordered table-striped table-vcenter">
                 <thead>
                     <tr>
