@@ -112,38 +112,7 @@
                 </tbody>
             </table>
 
-            <nav aria-label="Classic Search Navigation">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="javascript:void(0)" tabindex="-1" aria-label="Previous">
-                            <span aria-hidden="true">
-                                <i class="fa fa-angle-double-left"></i>
-                            </span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li class="page-item active">
-                        <a class="page-link" href="javascript:void(0)">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="javascript:void(0)">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="javascript:void(0)">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="javascript:void(0)">4</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="javascript:void(0)" aria-label="Next">
-                            <span aria-hidden="true">
-                                <i class="fa fa-angle-double-right"></i>
-                            </span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            @include('pagination.default', ['collection' => $tab_usuario])
 
         </div>
     </div>

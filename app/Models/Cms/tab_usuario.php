@@ -45,14 +45,14 @@ class tab_usuario extends Model implements AuthenticatableContract,
     protected $hidden = ['password', 'remember_token'];
     
     public static $validarCrear = array(
-		"usuario"    => "required|alpha_dash|min:5|max:30|unique:tab_usuario,da_login",
+		"usuario"    => "required|alpha_dash|min:1|max:30|unique:tab_usuario,da_login",
 		"correo"    => "required|email|unique:tab_usuario,da_email",
 		//"contraseña" => "required|alpha_dash|min:6|max:30",
 		"nombre"    => "required",
 	);
 	
 	public static $validarEditar = array(
-		"usuario"    => "required|alpha_dash|min:5|max:30",
+		"usuario"    => "required|alpha_dash|min:1|max:30",
 		"correo"    => "required|email",
 		//"contraseña" => "required|alpha_dash|min:6|max:30",
 		"nombre"    => "required",
