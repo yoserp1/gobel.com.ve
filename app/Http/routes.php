@@ -34,11 +34,16 @@ Route::group(['namespace' => 'Cms'], function(){
 		Route::get('recuperar/{confirmacion}', 'passwordController@confirmar');
 		Route::post('recuperar/cambiar', 'passwordController@guardar');
 		Route::get('inicio', 'panelController@inicio');
-		Route::post('usuario/password', 'usuarioController@guardar');
+		Route::post('usuario/password', 'usuarioController@guardarPassword');
 		Route::get('inicio/notificacion', 'panelController@notificacion');
 		Route::get('portal/editar', 'portalController@editar');
 		Route::post('portal/guardar/{id}', 'portalController@guardar');
 		//*Modulo de usuario*/
 		Route::get('usuario', 'usuarioController@lista');
+		Route::get('usuario/nuevo', 'usuarioController@nuevo');
+		Route::get('usuario/editar/{id}', 'usuarioController@editar');
+		Route::post('usuario/guardar', 'usuarioController@guardar');
+		Route::post('usuario/guardar/{id}', 'usuarioController@guardar');
+		Route::post('usuario/eliminar', 'usuarioController@eliminar');
 	});
 });

@@ -46,7 +46,7 @@ class usuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function guardar(Request $request)
+    public function guardarPassword(Request $request)
     {
       $contraseña_actual = tab_usuario::find( Auth::user()->id );
       $valido = Hash::check( $request->get("contraseña_actual"), $contraseña_actual->da_password);
@@ -161,5 +161,91 @@ class usuarioController extends Controller
             'desde' => $desde,
             'hasta' => $hasta
         ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function editar($id)
+    {
+        $data = tab_usuario::select( 'id', 'da_login', 'in_activo', 'nb_usuario', 'da_email')
+        ->where('id', '=', $id)
+        ->first();
+
+        return View::make('cms.usuario.editar')->with([
+            'data'  => $data
+        ]);
+    }
+
+        /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function guardar(Request $request, $id = NULL)
+    {
+        DB::beginTransaction();
+
+        if($id!=''||$id!=null){
+
+          $validador = Validator::make( $request->all(), tab_usuario::$validarEditar);
+          if ($validador->fails()) {
+              return Redirect::back()->withErrors( $validador)->withInput( $request->all());
+          }
+
+          try {
+
+            $tab_usuario = tab_usuario::find( $id);
+            $tab_usuario->da_login = $request->get("usuario");
+            $tab_usuario->nb_usuario = $request->get("nombre");
+            $tab_usuario->da_email = $request->get("correo");
+            $tab_usuario->save();
+
+            DB::commit();
+
+            Session::flash('msg_side_overlay', 'Registro Editado con Exito!');
+            return Redirect::to('/cms/usuario');
+
+          }catch (\Illuminate\Database\QueryException $e)
+          {
+            DB::rollback();
+            return Redirect::back()->withErrors([
+                'da_alert_form' => $e->getMessage()
+            ])->withInput( $request->all());
+          }
+
+        }else{
+
+          $validador = Validator::make( $request->all(), tab_usuario::$validarCrear);
+          if ($validador->fails()) {
+              return Redirect::back()->withErrors( $validador)->withInput( $request->all());
+          }
+
+          try {
+
+            $tab_usuario = new tab_usuario;
+            $tab_usuario->da_login = $request->get("usuario");
+            $tab_usuario->nb_usuario = $request->get("nombre");
+            $tab_usuario->da_email = $request->get("correo");
+            $tab_usuario->da_password = bcrypt(123456);
+            $tab_usuario->save();
+
+            DB::commit();
+
+            Session::flash('msg_side_overlay', 'Registro creado con Exito!');
+            return Redirect::to('/cms/usuario');
+
+          }catch (\Illuminate\Database\QueryException $e)
+          {
+            DB::rollback();
+            return Redirect::back()->withErrors([
+                'da_alert_form' => $e->getMessage()
+            ])->withInput( $request->all());
+          }
+
+        }
     }
 }

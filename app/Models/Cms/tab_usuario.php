@@ -49,7 +49,6 @@ class tab_usuario extends Model implements AuthenticatableContract,
 		"correo"    => "required|email|unique:tab_usuario,da_email",
 		//"contraseña" => "required|alpha_dash|min:6|max:30",
 		"nombre"    => "required",
-		"rol"    => "required|integer",
 	);
 	
 	public static $validarEditar = array(
@@ -57,7 +56,6 @@ class tab_usuario extends Model implements AuthenticatableContract,
 		"correo"    => "required|email",
 		//"contraseña" => "required|alpha_dash|min:6|max:30",
 		"nombre"    => "required",
-		"rol"    => "required|integer",
 	);
 
 	public static $validarPass = array(

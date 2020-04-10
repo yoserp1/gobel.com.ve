@@ -96,7 +96,7 @@
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <a href="{{ url('/cms/inicio') }}">
+                                <a href="{{ url('/cms/usuario/editar').'/'. $value->id }}">
                                     <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Editar">
                                         <i class="fa fa-pencil-alt"></i>
                                     </button>
