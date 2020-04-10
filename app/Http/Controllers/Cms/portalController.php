@@ -68,6 +68,19 @@ class portalController extends Controller
 
                 $tab_portal = tab_portal::find( $id);
                 $tab_portal->nb_portal = $request->get("titulo");
+                //$tab_portal->nb_cms = $request->get("cms");
+                $tab_portal->de_description = $request->get("description");
+                $tab_portal->de_keywords = $request->get("keywords");
+                $tab_portal->de_author = $request->get("author");
+                $tab_portal->de_robots = $request->get("robots");
+                $tab_portal->de_og_title = $request->get("og_title");
+                $tab_portal->de_og_site_name = $request->get("og_site_name");
+                $tab_portal->de_og_description = $request->get("og_description");
+                $tab_portal->de_og_type = $request->get("og_type");
+                $tab_portal->de_og_url = $request->get("og_url");
+                $tab_portal->de_og_image = $request->get("og_image");
+                $tab_portal->url_shortcut_icon = $request->get("shortcut_icon");
+                $tab_portal->de_analytics = $request->get("analytics");
                 $tab_portal->save();
     
                 $tab_notificacion = new tab_notificacion;
