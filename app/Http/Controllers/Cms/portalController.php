@@ -66,6 +66,15 @@ class portalController extends Controller
 
             try {
 
+                if ($request->hasFile('shortcut_icon')) {
+                    $image           = $request->file('shortcut_icon');
+                    $name            = time() . '.' . $image->getClientOriginalExtension();
+                    $destinationPath = public_path('/images/icon');
+                    $image->move($destinationPath, $name);
+                    $url = '/images/icon/' . $name;
+                    //$url = url('/') . '/images/icon/' . $name;
+                }
+
                 $tab_portal = tab_portal::find( $id);
                 $tab_portal->nb_portal = $request->get("titulo");
                 //$tab_portal->nb_cms = $request->get("cms");
@@ -79,7 +88,9 @@ class portalController extends Controller
                 $tab_portal->de_og_type = $request->get("og_type");
                 $tab_portal->de_og_url = $request->get("og_url");
                 $tab_portal->de_og_image = $request->get("og_image");
-                $tab_portal->url_shortcut_icon = $request->get("shortcut_icon");
+                if (!empty($url)) {
+                    $tab_portal->url_shortcut_icon = $url;
+                }
                 $tab_portal->de_analytics = $request->get("analytics");
                 $tab_portal->save();
     
