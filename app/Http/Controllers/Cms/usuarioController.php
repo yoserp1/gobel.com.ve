@@ -102,4 +102,64 @@ class usuarioController extends Controller
         }
 
     }
+
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function lista(Request $request)
+    {
+
+        $sortBy = 'id';
+        $orderBy = 'desc';
+        $perPage = 20;
+        $q = null;
+        $desde = null;
+        $hasta = null;
+        $columnas = [
+            ['valor'=>'bnumberdialed', 'texto'=>'Número de Origen'],
+            ['valor'=>'bnumberdialed', 'texto'=>'Número de Destino']
+        ];
+    
+        if ($request->has('orderBy')){
+            $orderBy = $request->query('orderBy');
+        }
+        if ($request->has('sortBy')){
+            $sortBy = $request->query('sortBy');
+            //$sortBy = 'id';
+        } 
+        if ($request->has('perPage')){
+            $perPage = $request->query('perPage');
+        } 
+        if ($request->has('q')){
+            $q = $request->query('q');
+        }
+
+        if ($request->has('desde')){
+            $desde = $request->desde;
+        }
+
+        if ($request->has('hasta')){
+            $hasta = $request->hasta;
+        }
+
+        $tab_usuario = tab_usuario::select( 'id', 'da_login', 'in_activo', 'nb_usuario', 'da_email')
+        ->where('in_activo', '=', true)
+        //->search($q, $sortBy)
+        //->fecha($desde, $hasta)
+        ->orderBy($sortBy, $orderBy)
+        ->paginate($perPage);
+
+        return View::make('cms.usuario.lista')->with([
+            'tab_usuario' => $tab_usuario,
+            'orderBy' => $orderBy,
+            'sortBy' => $sortBy,
+            'perPage' => $perPage,
+            'columnas' => $columnas,
+            'q' => $q,
+            'desde' => $desde,
+            'hasta' => $hasta
+        ]);
+    }
 }

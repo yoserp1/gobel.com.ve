@@ -33,6 +33,8 @@
 
 <!-- Page Content -->
 <div class="content content-full content-boxed">
+    <!-- Partial Table -->
+    <div class="block block-rounded block-bordered">
     <!-- New Post -->
     <form action="{{ URL::to('cms/portal/guardar').'/'.$data->id }}" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -180,6 +182,7 @@
             </div>
         </div>
     </form>
+    </div>
     <!-- END New Post -->
 </div>
 <!-- END Page Content -->
