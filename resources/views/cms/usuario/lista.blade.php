@@ -112,7 +112,7 @@
                 </tbody>
             </table>
 
-            @include('pagination.default', ['collection' => $tab_usuario])
+            {{ $tab_usuario->appends(Request::only(['perPage','q']))->render() }}
 
         </div>
     </div>
