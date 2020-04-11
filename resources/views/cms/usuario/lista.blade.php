@@ -9,7 +9,12 @@
     <!-- Page JS Plugins -->
 
     <!-- Page JS Code -->
-
+    <script>
+        $('.pagination').addClass('justify-content-end');
+        $('.pagination li').addClass('page-item');
+        $('.pagination li a').addClass('page-link');
+        $('.pagination span').addClass('page-link');
+    </script>
 @endsection
 
 @section('content')
@@ -113,6 +118,10 @@
             </table>
 
             {{ $tab_usuario->appends(Request::only(['perPage','q']))->render() }}
+{{--
+    @include('pagination.default', ['collection' => $tab_usuario])
+--}}
+            
 
         </div>
     </div>

@@ -113,7 +113,7 @@ class usuarioController extends Controller
 
         $sortBy = 'id';
         $orderBy = 'desc';
-        $perPage = 1;
+        $perPage = 5;
         $q = null;
         $desde = null;
         $hasta = null;
