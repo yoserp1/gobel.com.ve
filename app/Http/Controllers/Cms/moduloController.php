@@ -59,9 +59,10 @@ class moduloController extends Controller
             $q = $request->query('q');
         }
 
-        $tab_item = tab_item::select( 'id', 'de_item', 'de_contenido')
-        ->where('in_activo', '=', true)
-        ->search($q, $sortBy)
+        $tab_item = tab_item::select( 'tab_item.id', 'de_item', 'de_contenido', 'de_item_formato')
+        ->join('tab_item_formato as t01','t01.id','=','tab_item.id_tab_item_formato')
+        ->where('t01.in_activo', '=', true)
+        //->search($q, $sortBy)
         //->fecha($desde, $hasta)
         ->orderBy($sortBy, $orderBy)
         ->paginate($perPage);
@@ -101,7 +102,8 @@ class moduloController extends Controller
      */
     public function editar($id)
     {
-        $data = tab_item::select( 'id', 'de_item', 'de_contenido')
+        $data = tab_item::select( 'id', 'in_activo', 'created_at', 'updated_at', 'de_item', 'de_contenido', 
+        'url_imagen', 'id_tab_item_formato')
         ->where('id', '=', $id)
         ->first();
 
@@ -134,9 +136,8 @@ class moduloController extends Controller
           try {
 
             $tab_item = tab_item::find( $id);
-            $tab_item->da_login = $request->get("usuario");
-            $tab_item->nb_usuario = $request->get("nombre");
-            $tab_item->da_email = $request->get("correo");
+            $tab_item->id_tab_item_formato = $request->get("formato");
+            $tab_item->de_item = $request->get("descripcion");
             $tab_item->save();
 
             DB::commit();
@@ -163,6 +164,7 @@ class moduloController extends Controller
 
             $tab_item = new tab_item;
             $tab_item->id_tab_item_formato = $request->get("formato");
+            $tab_item->de_item = $request->get("descripcion");
             $tab_item->save();
 
             DB::commit();
