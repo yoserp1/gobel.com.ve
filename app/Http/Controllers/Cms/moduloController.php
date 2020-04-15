@@ -3,6 +3,7 @@
 namespace portal\Http\Controllers\Cms;
 //*******agregar esta linea******//
 use portal\Models\Cms\tab_item;
+use portal\Models\Cms\tab_item_formato;
 use Validator;
 use View;
 use Auth;
@@ -40,8 +41,6 @@ class moduloController extends Controller
         $orderBy = 'desc';
         $perPage = 5;
         $q = null;
-        $desde = null;
-        $hasta = null;
         $columnas = [
             ['valor'=>'bnumberdialed', 'texto'=>'Número de Origen'],
             ['valor'=>'bnumberdialed', 'texto'=>'Número de Destino']
@@ -52,21 +51,12 @@ class moduloController extends Controller
         }
         if ($request->has('sortBy')){
             $sortBy = $request->query('sortBy');
-            $sortBy = 'id';
         } 
         if ($request->has('perPage')){
             $perPage = $request->query('perPage');
         } 
         if ($request->has('q')){
             $q = $request->query('q');
-        }
-
-        if ($request->has('desde')){
-            $desde = $request->desde;
-        }
-
-        if ($request->has('hasta')){
-            $hasta = $request->hasta;
         }
 
         $tab_item = tab_item::select( 'id', 'de_item', 'de_contenido')
@@ -82,9 +72,7 @@ class moduloController extends Controller
             'sortBy' => $sortBy,
             'perPage' => $perPage,
             'columnas' => $columnas,
-            'q' => $q,
-            'desde' => $desde,
-            'hasta' => $hasta
+            'q' => $q
         ]);
     }
 
@@ -97,8 +85,12 @@ class moduloController extends Controller
     {
         $data = array( "id" => null);
 
+        $tab_item_formato = tab_item_formato::orderBy('id','asc')
+        ->get();
+
         return View::make('cms.modulo.nuevo')->with([
-            'data'  => $data
+            'data'  => $data,
+            'tab_item_formato'  => $tab_item_formato
         ]);
     }
 
@@ -113,8 +105,79 @@ class moduloController extends Controller
         ->where('id', '=', $id)
         ->first();
 
+        $tab_item_formato = tab_item_formato::orderBy('id','asc')
+        ->get();
+
         return View::make('cms.modulo.editar')->with([
-            'data'  => $data
+            'data'  => $data,
+            'tab_item_formato'  => $tab_item_formato
         ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function guardar(Request $request, $id = NULL)
+    {
+        DB::beginTransaction();
+
+        if($id!=''||$id!=null){
+
+          $validador = Validator::make( $request->all(), tab_item::$validarEditar);
+          if ($validador->fails()) {
+              return Redirect::back()->withErrors( $validador)->withInput( $request->all());
+          }
+
+          try {
+
+            $tab_item = tab_item::find( $id);
+            $tab_item->da_login = $request->get("usuario");
+            $tab_item->nb_usuario = $request->get("nombre");
+            $tab_item->da_email = $request->get("correo");
+            $tab_item->save();
+
+            DB::commit();
+
+            Session::flash('msg_side_overlay', 'Registro Editado con Exito!');
+            return Redirect::to('/cms/modulo');
+
+          }catch (\Illuminate\Database\QueryException $e)
+          {
+            DB::rollback();
+            return Redirect::back()->withErrors([
+                'da_alert_form' => $e->getMessage()
+            ])->withInput( $request->all());
+          }
+
+        }else{
+
+          $validador = Validator::make( $request->all(), tab_item::$validarCrear);
+          if ($validador->fails()) {
+              return Redirect::back()->withErrors( $validador)->withInput( $request->all());
+          }
+
+          try {
+
+            $tab_item = new tab_item;
+            $tab_item->id_tab_item_formato = $request->get("formato");
+            $tab_item->save();
+
+            DB::commit();
+
+            Session::flash('msg_side_overlay', 'Registro creado con Exito!');
+            return Redirect::to('/cms/modulo');
+
+          }catch (\Illuminate\Database\QueryException $e)
+          {
+            DB::rollback();
+            return Redirect::back()->withErrors([
+                'da_alert_form' => $e->getMessage()
+            ])->withInput( $request->all());
+          }
+
+        }
     }
 }

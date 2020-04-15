@@ -12,6 +12,16 @@ class tab_item extends Model
     //Todos los modelos deben extender la clase Eloquent
     protected $table = 'tab_item';
 
+    public static $validarCrear = array(
+      "formato"    => "required|numeric",
+      "descripcion"    => "required",
+    );
+    
+    public static $validarEditar = array(
+      "formato"    => "required|numeric",
+      "descripcion"    => "required",
+    );
+
     public function scopeSearch($query, $q, $sortBy)
     {
       switch ($sortBy) {
