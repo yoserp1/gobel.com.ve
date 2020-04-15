@@ -127,7 +127,7 @@ class usuarioController extends Controller
         }
         if ($request->has('sortBy')){
             $sortBy = $request->query('sortBy');
-            //$sortBy = 'id';
+            $sortBy = 'id';
         } 
         if ($request->has('perPage')){
             $perPage = $request->query('perPage');
@@ -146,7 +146,7 @@ class usuarioController extends Controller
 
         $tab_usuario = tab_usuario::select( 'id', 'da_login', 'in_activo', 'nb_usuario', 'da_email')
         ->where('in_activo', '=', true)
-        //->search($q, $sortBy)
+        ->search($q, $sortBy)
         //->fecha($desde, $hasta)
         ->orderBy($sortBy, $orderBy)
         ->paginate($perPage);

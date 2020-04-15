@@ -71,4 +71,16 @@ class tab_usuario extends Model implements AuthenticatableContract,
 		"contraseña" => "required|alpha_dash|min:3|max:30|confirmed",
 		"contraseña_confirmation" => "required|alpha_dash|min:3|max:30"
 	);
+
+	public function scopeSearch($query, $q, $sortBy)
+    {
+      switch ($sortBy) {
+          case 'id':
+              return $query->where('nb_usuario', 'ILIKE', "%{$q}%");
+          break;
+            default:
+              return $query;
+          break;
+      }
+    }
 }

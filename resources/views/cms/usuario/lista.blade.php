@@ -57,7 +57,7 @@
             <div class="row">
                 <div class="col-sm-12 col-md-6">
                     <label>
-                        <select name="perPage" class="form-control">
+                        <select name="perPage" class="custom-select">
                             <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="20">20</option>
@@ -66,7 +66,7 @@
                 </div>
                 <div class="col-sm-12 col-md-6">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="q" name="q" placeholder="Buscar...">
+                        <input type="text" class="form-control" id="q" name="q" value="{{ $q }}" placeholder="Buscar...">
                         <div class="input-group-append">
                             <button type="submit" class="input-group-text">
                                 <i class="fa fa-fw fa-search"></i>
