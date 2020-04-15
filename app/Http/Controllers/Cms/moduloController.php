@@ -4,6 +4,7 @@ namespace portal\Http\Controllers\Cms;
 //*******agregar esta linea******//
 use portal\Models\Cms\tab_item;
 use portal\Models\Cms\tab_item_formato;
+use portal\Models\Cms\tab_item_detalle;
 use Validator;
 use View;
 use Auth;
@@ -110,10 +111,26 @@ class moduloController extends Controller
         $tab_item_formato = tab_item_formato::orderBy('id','asc')
         ->get();
 
-        return View::make('cms.modulo.editar')->with([
-            'data'  => $data,
-            'tab_item_formato'  => $tab_item_formato
-        ]);
+        $tab_item_detalle = tab_item_detalle::orderBy('id','asc')
+        ->where('id_tab_item', '=', $data->id)
+        ->get();
+
+        switch($data->id_tab_item_formato){
+            case 1:
+
+                return View::make('cms.modulo.home')->with([
+                    'data'  => $data,
+                    'tab_item_formato'  => $tab_item_formato,
+                    'tab_item_detalle'  => $tab_item_detalle
+                ]);
+
+            break;
+
+            default:
+                return redirect('/cms/modulo');
+
+            break;
+          }
     }
 
     /**

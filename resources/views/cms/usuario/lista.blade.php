@@ -57,10 +57,10 @@
             <div class="row">
                 <div class="col-sm-12 col-md-6">
                     <label>
-                        <select name="perPage" class="custom-select">
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="20">20</option>
+                        <select name="perPage" class="custom-select" value="{{ $perPage }}">
+                            @foreach(['5','10','20'] as $page)
+                            <option @if($page == $perPage) selected @endif value="{{ $page }}">{{ $page }}</option>
+                            @endforeach
                         </select>
                     </label>
                 </div>
