@@ -78,7 +78,7 @@
         <form>
         
             <table class="table table-bordered table-striped table-vcenter">
-                <thead>
+                <thead class="thead-light">
                     <tr>
                         <th class="text-center" style="width: 100px;">
                             <i class="far fa-user"></i>
