@@ -2,12 +2,17 @@
 
 @section('css_before')
     <!-- Page JS Plugins CSS -->
+    <link rel="stylesheet" href="{{ asset('/assets/js/plugins/flatpickr/flatpickr.min.css') }}">
 
 @endsection
 
 @section('js_after')
     <!-- Page JS Plugins -->
+    <script src="{{ asset('/assets/js/plugins/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('/assets/js/plugins/flatpickr/flatpickr.min.js') }}"></script>
 
+    <!-- Page JS Helpers (Flatpickr + CKEditor plugins) -->
+    <script>jQuery(function(){ CKEDITOR.config.height = '200px'; Dashmix.helpers(['flatpickr', 'ckeditor']); });</script>
     <!-- Page JS Code -->
 
 @endsection
@@ -65,9 +70,18 @@
                                 <div id="descripcion-error" class="invalid-feedback animated fadeIn">{{ $errors->first('descripcion') }}</div>
                             @endif
                         </div>
-                        <div class="form-group">
+                        {{--<div class="form-group">
                             <label for="contenido">Contenido</label>
                             <input type="text" class="form-control {!! $errors->has('contenido') ? 'is-invalid' : '' !!}" id="contenido" name="contenido" placeholder="Contenido..." value="{{ old('contenido') }}" {{ $errors->has('contenido') ? 'aria-describedby="contenido-error" aria-invalid="true"' : '' }}>
+                            @if( $errors->has('contenido') )
+                                <div id="contenido-error" class="invalid-feedback animated fadeIn">{{ $errors->first('contenido') }}</div>
+                            @endif
+                        </div>--}}
+                        <div class="form-group">
+                            <label for="contenido">Contenido</label>
+                            <textarea id="js-ckeditor" class="form-control {!! $errors->has('contenido') ? 'is-invalid' : '' !!}" id="contenido" name="contenido" {{ $errors->has('contenido') ? 'aria-describedby="contenido-error" aria-invalid="true"' : '' }}>
+                            {{ old('contenido') }}
+                            </textarea>
                             @if( $errors->has('contenido') )
                                 <div id="contenido-error" class="invalid-feedback animated fadeIn">{{ $errors->first('contenido') }}</div>
                             @endif
