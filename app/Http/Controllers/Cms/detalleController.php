@@ -82,6 +82,15 @@ class detalleController extends Controller
 
           try {
 
+            if ($request->hasFile('imagen')) {
+              $image           = $request->file('imagen');
+              $name            = time() . '.' . $image->getClientOriginalExtension();
+              $destinationPath = public_path('/images/media');
+              $image->move($destinationPath, $name);
+              $url = '/images/media/' . $name;
+              //$url = url('/') . '/images/media/' . $name;
+          }
+
             $tab_item_detalle = tab_item_detalle::find( $id);
             $tab_item_detalle->id_tab_item = $request->get("item");
             $tab_item_detalle->de_item_detalle = $request->get("descripcion");
