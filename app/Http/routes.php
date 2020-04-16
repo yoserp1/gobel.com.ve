@@ -54,7 +54,7 @@ Route::group(['namespace' => 'Cms'], function(){
 		Route::post('modulo/eliminar', 'moduloController@eliminar');
 		//*Modulo de detalle*/
 		Route::get('modulo/editar/{item}/nuevo', 'detalleController@nuevo');
-		Route::get('modulo/editar/{item}/editar/{id}', 'detalleController@editar');
+		Route::get('modulo/detalle/editar/{id}', 'detalleController@editar');
 		Route::post('modulo/editar/guardar', 'detalleController@guardar');
 		Route::post('modulo/editar/guardar/{id}', 'detalleController@guardar');
 		Route::post('modulo/editar/eliminar', 'detalleController@eliminar');

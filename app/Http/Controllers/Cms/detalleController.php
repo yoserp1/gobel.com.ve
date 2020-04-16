@@ -29,7 +29,7 @@ class detalleController extends Controller
       $this->middleware('optimizar');
     }
 
-        /**
+      /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -43,6 +43,23 @@ class detalleController extends Controller
 
         return View::make('cms.modulo.detalle.nuevo')->with([
             'data'  => $data
+        ]);
+    }
+
+        /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function editar($id)
+    {
+        $data = tab_item_detalle::select( 'id', 'id_tab_item', 'de_item_detalle', 'de_contenido', 'url_imagen', 'in_activo', 
+        'created_at', 'updated_at')
+        ->where('id', '=', $id)
+        ->first();
+
+        return View::make('cms.modulo.detalle.editar')->with([
+          'data'  => $data
         ]);
     }
 

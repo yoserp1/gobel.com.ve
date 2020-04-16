@@ -118,7 +118,7 @@
                                 <td class="d-none d-sm-table-cell"><em class="text-muted">{{ $value->de_contenido }}</em></td>
                                 <td class="text-center">
                                     <div class="btn-group">
-                                        <a href="{{ url('/cms/usuario/editar').'/'. $value->id }}">
+                                        <a href="{{ url('/cms/modulo/detalle/editar').'/'. $value->id }}">
                                             <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Editar">
                                                 <i class="fa fa-pencil-alt"></i>
                                             </button>
