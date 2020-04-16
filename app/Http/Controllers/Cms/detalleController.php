@@ -67,13 +67,17 @@ class detalleController extends Controller
 
             $tab_item_detalle = tab_item_detalle::find( $id);
             $tab_item_detalle->id_tab_item = $request->get("item");
-            $tab_item_detalle->de_item = $request->get("descripcion");
+            $tab_item_detalle->de_item_detalle = $request->get("descripcion");
+            $tab_item_detalle->de_contenido = $request->get("contenido");
+            if (!empty($url)) {
+                $tab_item_detalle->url_imagen = $url;
+            }
             $tab_item_detalle->save();
 
             DB::commit();
 
             Session::flash('msg_side_overlay', 'Registro Editado con Exito!');
-            return Redirect::to('/cms/modulo/editar').'/'.$request->get("item");
+            return Redirect::to('/cms/modulo/editar'.'/'.$request->get("item"));
 
           }catch (\Illuminate\Database\QueryException $e)
           {
@@ -92,15 +96,28 @@ class detalleController extends Controller
 
           try {
 
-            $tab_item = new tab_item_detalle;
+            if ($request->hasFile('imagen')) {
+                $image           = $request->file('imagen');
+                $name            = time() . '.' . $image->getClientOriginalExtension();
+                $destinationPath = public_path('/images/media');
+                $image->move($destinationPath, $name);
+                $url = '/images/media/' . $name;
+                //$url = url('/') . '/images/media/' . $name;
+            }
+
+            $tab_item_detalle = new tab_item_detalle;
             $tab_item_detalle->id_tab_item = $request->get("item");
-            $tab_item_detalle->de_item = $request->get("descripcion");
+            $tab_item_detalle->de_item_detalle = $request->get("descripcion");
+            $tab_item_detalle->de_contenido = $request->get("contenido");
+            if (!empty($url)) {
+                $tab_item_detalle->url_imagen = $url;
+            }
             $tab_item_detalle->save();
 
             DB::commit();
 
             Session::flash('msg_side_overlay', 'Registro creado con Exito!');
-            return Redirect::to('/cms/modulo/editar').'/'.$request->get("item");
+            return Redirect::to('/cms/modulo/editar'.'/'.$request->get("item"));
 
           }catch (\Illuminate\Database\QueryException $e)
           {

@@ -80,11 +80,19 @@
                 </div>
             </div>
 
-            <div class="block-content">
 
-                <div class="block-options">
-                    <button type="button" class="btn-block-option mr-2"><a href="{{ URL::to('cms/modulo/editar').'/'.$data->id.'/nuevo' }}"><i class="fa fa-plus mr-1"></i> Agregar</a></button>
+            <div class="row justify-content-center push">
+                <div class="col-md-10">
+                    <div class="block-options">
+                        <a class="btn btn-light" href="{{ URL::to('cms/modulo/editar').'/'.$data->id.'/nuevo' }}">
+                            <i class="fa fa-plus mr-1"></i> Agregar
+                        </a>
+                    </div>
                 </div>
+            </div>
+
+
+            <div class="block-content">
 
                 <div class="row justify-content-center push">
                     <div class="col-md-10">
@@ -95,8 +103,8 @@
                                 <th class="text-center" style="width: 100px;">
                                     <i class="far fa-images"></i>
                                 </th>
-                                <th style="width: 30%;">Descripcion</th>
-                                <th class="d-none d-sm-table-cell" style="width: 15%;">Cotenido</th>
+                                <th style="width: 15%;">Descripcion</th>
+                                <th class="d-none d-sm-table-cell" style="width: 30%;">Contenido</th>
                                 <th class="d-none d-md-table-cell text-center" style="width: 100px;">Acciones</th>
                             </tr>
                         </thead>
@@ -104,13 +112,10 @@
                         @foreach($tab_item_detalle as $key => $value)
                             <tr>
                                 <td class="text-center">
-                                    <img class="img-avatar img-avatar48" src="{{ asset('assets/media/avatars/avatar5.jpg') }}" alt="">
+                                    <img class="img-fluid options-item" src="{{ asset($value->url_imagen) }}" alt="">
                                 </td>
-                                <td class="font-w600">{{ $value->nb_usuario }}</td>
-                                <td class="d-none d-sm-table-cell"><em class="text-muted">{{ $value->da_email }}</em></td>
-                                <td class="d-none d-md-table-cell">
-                                    <span class="badge badge-primary">{{ $value->da_login }}</span>
-                                </td>
+                                <td class="font-w600">{{ $value->de_item_detalle }}</td>
+                                <td class="d-none d-sm-table-cell"><em class="text-muted">{{ $value->de_contenido }}</em></td>
                                 <td class="text-center">
                                     <div class="btn-group">
                                         <a href="{{ url('/cms/usuario/editar').'/'. $value->id }}">
