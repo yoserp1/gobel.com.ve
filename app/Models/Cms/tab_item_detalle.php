@@ -11,4 +11,16 @@ class tab_item_detalle extends Model
 
     //Todos los modelos deben extender la clase Eloquent
     protected $table = 'tab_item_detalle';
+
+    public static $validarCrear = array(
+        "descripcion"    => "required",
+        "contenido"    => "required",
+        "imagen"       => "required|image|max:1024|mimes:jpeg,png",
+      );
+      
+      public static $validarEditar = array(
+        "descripcion"    => "required",
+        "contenido"    => "required",
+        "imagen"       => "required|image|max:1024|mimes:jpeg,png",
+      );
 }

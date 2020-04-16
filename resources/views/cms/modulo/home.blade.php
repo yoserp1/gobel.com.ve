@@ -83,7 +83,7 @@
             <div class="block-content">
 
                 <div class="block-options">
-                    <button type="button" class="btn-block-option mr-2"><a href="{{ URL::to('cms/modulo/nuevo') }}"><i class="fa fa-plus mr-1"></i> Agregar</a></button>
+                    <button type="button" class="btn-block-option mr-2"><a href="{{ URL::to('cms/modulo/editar').'/'.$data->id.'/nuevo' }}"><i class="fa fa-plus mr-1"></i> Agregar</a></button>
                 </div>
 
                 <div class="row justify-content-center push">
