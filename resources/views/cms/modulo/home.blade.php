@@ -9,6 +9,15 @@
     <!-- Page JS Plugins -->
 
     <!-- Page JS Code -->
+<script>
+    $('#borrar').on('show.bs.modal', function (event) {
+        $("#borrarForm").attr('action','{{ url('/cms/modulo/detalle/borrar') }}');
+        var button = $(event.relatedTarget);
+        var item_id = button.data('item_id');
+        var modal = $(this);
+        modal.find('.modal-content #registro_id').val(item_id);
+});
+</script>
 
 @endsection
 
@@ -123,7 +132,7 @@
                                                 <i class="fa fa-pencil-alt"></i>
                                             </button>
                                         </a>
-                                        <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Borrar">
+                                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" title="Borrar" data-target="#borrar" data-item_id="{{ $value->id }}" >
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </div>
