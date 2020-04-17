@@ -37,9 +37,11 @@
             </a>
             <div class="navbar-collapse collapse justify-content-center" id="navbarCollapse">
                 <ul class="navbar-nav navbar-center" id="mySidenav">
+                    @foreach($item as $key => $value)
                     <li class="nav-item active">
-                        <a href="#home" class="nav-link">Inicio</a>
+                        <a href="#{{ $value->de_item_formato }}" class="nav-link">{{ $value->de_item }}</a>
                     </li>
+                    @endforeach
                     <li class="nav-item">
                         <a href="#features" class="nav-link">Bondades</a>
                     </li>
@@ -69,69 +71,22 @@
         </div>
     </nav>
     <!-- End Navbar -->
-    <!-- Home Start-->
-    <section class="theme-bg overflow-hidden home-section" id="home">
-        <div id="particles-js">
-        </div>
-        <div class="waves-bg-img home-bg">
-            <div class="circle-clip">
-                <img src="images/slider-img/pattern-1.png" class="img-fluid" alt="">
-            </div>
-            <div class="square-clip">
-                <img src="images/slider-img/pattern-2.png" class="img-fluid" alt="">
-            </div>
-            <div class="container">
-                <div class="owl-carousel owl-theme main-slider">
-                    <div class="item">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6">
-                                <div class="content-fadeInUp">
-                                    <h2 class="heading">
-                                        Gobel Administrativo
-                                    </h2>
-                                    <h1 class="text-white font-20">Un Sistema Administrativo te ofrece tantas bondades como Gobel Administrativo</h1>
-                                    <p class="para-txt">
-                                    El sistema apunta a que los recursos de la organización en cuestión sean administrados de forma eficiente.
-                                    </p>
-                                    <div class="learn-more">
-                                        <a href="#aboutus" class="btn btn-white btn-rounded text-white">Saber Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="img-fadeInRight">
-                                    <img src="images/slider-img/01.png" class="img-fluid" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6">
-                                <div class="content-fadeInUp">
-                                    <h2 class="heading">
-                                        Gobel Tributario
-                                    </h2>
-                                    <p class="para-txt">
-                                        El sistema tributario sirve, además de para recaudar ingresos públicos, como instrumento de política económica general y para intentar conseguir una mejor distribución de la renta nacional.
-                                    </p>
-                                    <div class="learn-more">
-                                        <a href="#aboutus" class="btn btn-white btn-rounded text-white">Saber Más</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="img-fadeInRight">
-                                    <img src="images/slider-img/02.png" class="img-fluid" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Home End -->
+    @foreach($item as $key => $value)
+
+        @switch( $value->id_tab_item_formato)
+        @case(1)
+
+            @include('seccion.home', ['contenido' => $hijo->detalle( $value->id) ])
+
+            @breakswitch
+
+        @default
+            <span>Something went wrong, please try again</span>
+            @breakswitch
+        @endswitch
+
+    @endforeach
+
     <!-- Start Features -->
     <section class="section features-section overflow-hidden" id="features">
         <div class="container">

@@ -12,7 +12,7 @@
     <script src="{{ asset('/assets/js/plugins/flatpickr/flatpickr.min.js') }}"></script>
 
     <!-- Page JS Helpers (Flatpickr + CKEditor plugins) -->
-    <script>jQuery(function(){ CKEDITOR.config.height = '200px'; Dashmix.helpers(['flatpickr', 'ckeditor']); });</script>
+    <script>jQuery(function(){ CKEDITOR.config.height = '200px'; CKEDITOR.config.shiftEnterMode = CKEDITOR.ENTER_P; CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR; Dashmix.helpers(['flatpickr', 'ckeditor']); });</script>
     <!-- Page JS Code -->
 
 @endsection

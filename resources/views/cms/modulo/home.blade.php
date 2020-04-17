@@ -124,7 +124,7 @@
                                     <img class="img-fluid options-item" src="{{ asset($value->url_imagen) }}" alt="">
                                 </td>
                                 <td class="font-w600">{{ $value->de_item_detalle }}</td>
-                                <td class="d-none d-sm-table-cell"><em class="text-muted">{{ $value->de_contenido }}</em></td>
+                                <td class="d-none d-sm-table-cell"><em class="text-muted">{{ str_limit(strip_tags($value->de_contenido), 150) }}</em></td>
                                 <td class="text-center">
                                     <div class="btn-group">
                                         <a href="{{ url('/cms/modulo/detalle/editar').'/'. $value->id }}">
