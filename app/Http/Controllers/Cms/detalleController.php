@@ -156,4 +156,31 @@ class detalleController extends Controller
         }
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function eliminar( Request $request, $id = NULL)
+    {
+      DB::beginTransaction();
+      try {
+
+        $tab_item_detalle = tab_item_detalle::find( $request->get("id"));
+        $tab_item_detalle->delete();
+
+        DB::commit();
+
+        Session::flash('msg_side_overlay', 'Registro borrado con Exito!');
+        return Redirect::to('/cms/modulo/editar'.'/'.$id);
+
+      }catch (\Illuminate\Database\QueryException $e)
+      {
+        DB::rollback();
+        return Redirect::back()->withErrors([
+            'da_alert_form' => $e->getMessage()
+        ])->withInput( $request->all());
+      }
+    }
 }

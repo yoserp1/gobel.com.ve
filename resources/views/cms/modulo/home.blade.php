@@ -11,7 +11,7 @@
     <!-- Page JS Code -->
 <script>
     $('#borrar').on('show.bs.modal', function (event) {
-        $("#borrarForm").attr('action','{{ url('/cms/modulo/detalle/borrar') }}');
+        $("#borrarForm").attr('action','{{ url('/cms/modulo/editar').'/'.$data->id.'/eliminar' }}');
         var button = $(event.relatedTarget);
         var item_id = button.data('item_id');
         var modal = $(this);
