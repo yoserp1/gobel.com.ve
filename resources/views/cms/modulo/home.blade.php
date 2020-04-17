@@ -9,15 +9,15 @@
     <!-- Page JS Plugins -->
 
     <!-- Page JS Code -->
-<script>
-    $('#borrar').on('show.bs.modal', function (event) {
-        $("#borrarForm").attr('action','{{ url('/cms/modulo/editar').'/'.$data->id.'/eliminar' }}');
-        var button = $(event.relatedTarget);
-        var item_id = button.data('item_id');
-        var modal = $(this);
-        modal.find('.modal-content #registro_id').val(item_id);
-});
-</script>
+    <script>
+        $('#borrar').on('show.bs.modal', function (event) {
+            $("#borrarForm").attr('action','{{ url('/cms/modulo/editar').'/'.$data->id.'/eliminar' }}');
+            var button = $(event.relatedTarget);
+            var item_id = button.data('item_id');
+            var modal = $(this);
+            modal.find('.modal-content #registro_id').val(item_id);
+    });
+    </script>
 
 @endsection
 

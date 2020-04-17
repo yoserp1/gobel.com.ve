@@ -199,4 +199,32 @@ class moduloController extends Controller
 
         }
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function eliminar( Request $request)
+    {
+      DB::beginTransaction();
+      try {
+
+        $tab_item = tab_item::find( $request->get("id"));
+        $tab_item->delete();
+
+        DB::commit();
+
+        Session::flash('msg_side_overlay', 'Registro borrado con Exito!');
+        return Redirect::to('/cms/modulo');
+
+      }catch (\Illuminate\Database\QueryException $e)
+      {
+        DB::rollback();
+        return Redirect::back()->withErrors([
+            'da_alert_form' => $e->getMessage()
+        ])->withInput( $request->all());
+      }
+    }
 }

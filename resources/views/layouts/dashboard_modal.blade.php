@@ -50,7 +50,7 @@
     <div class="modal-dialog modal-dialog-popout" role="document">
         <div class="modal-content">
             <div class="block block-themed block-transparent mb-0">
-            <form id="borrarForm" action="#" method="post">
+            <form action="#" method="post" id="borrarForm">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="block-header bg-primary-dark">
                     <h3 class="block-title" id="myModalLabel">Aviso</h3>

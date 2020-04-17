@@ -27,7 +27,7 @@ class usuarioController extends Controller
     public function __construct()
     {
       $this->middleware('auth');
-      $this->middleware('optimizar');
+      //$this->middleware('optimizar');
     }
 
         /**
@@ -261,5 +261,33 @@ class usuarioController extends Controller
           }
 
         }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function eliminar( Request $request)
+    {
+      DB::beginTransaction();
+      try {
+
+        $tab_usuario = tab_usuario::find( $request->get("id"));
+        $tab_usuario->delete();
+
+        DB::commit();
+
+        Session::flash('msg_side_overlay', 'Registro borrado con Exito!');
+        return Redirect::to('/cms/usuario');
+
+      }catch (\Illuminate\Database\QueryException $e)
+      {
+        DB::rollback();
+        return Redirect::back()->withErrors([
+            'da_alert_form' => $e->getMessage()
+        ])->withInput( $request->all());
+      }
     }
 }
