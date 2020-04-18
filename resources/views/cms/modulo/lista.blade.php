@@ -77,6 +77,7 @@
                         <th class="text-center" style="width: 100px;">ID</th>
                         <th>Descripcion</th>
                         <th>Formato</th>
+                        <th>Estado</th>
                         <th class="d-none d-md-table-cell text-center" style="width: 100px;">Acciones</th>
                     </tr>
                 </thead>
@@ -86,6 +87,17 @@
                         <td class="font-w600">{{ $value->id }}</td>
                         <td class="d-none d-sm-table-cell"><em class="text-muted">{{ $value->de_item }}</em></td>
                         <td class="d-none d-sm-table-cell">{{ $value->de_item_formato }}</td>
+                        <td class="d-none d-sm-table-cell">
+                            @if ($value->in_activo == true)
+                            <a href="{{ url('/cms/modulo/despublicar').'/'. $value->id }}">
+                                <i class="fa fa-eye text-done mr-1"></i>
+                            </a>
+                            @else
+                            <a href="{{ url('/cms/modulo/publicar').'/'. $value->id }}">
+                                <i class="fa fa-eye-slash text-danger mr-1"></i>
+                            </a>
+                            @endif
+                        </td>
                         <td class="text-center">
                             <div class="btn-group">
                                 <a href="{{ url('/cms/modulo/editar').'/'. $value->id }}">

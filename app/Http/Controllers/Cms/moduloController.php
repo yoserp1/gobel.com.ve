@@ -38,7 +38,7 @@ class moduloController extends Controller
     public function lista(Request $request)
     {
 
-        $sortBy = 'id';
+        $sortBy = 'tab_item.id';
         $orderBy = 'desc';
         $perPage = 5;
         $q = null;
@@ -60,9 +60,9 @@ class moduloController extends Controller
             $q = $request->query('q');
         }
 
-        $tab_item = tab_item::select( 'tab_item.id', 'de_item', 'de_contenido', 'de_item_formato')
+        $tab_item = tab_item::select( 'tab_item.id', 'de_item', 'de_contenido', 'de_item_formato', 'tab_item.in_activo')
         ->join('tab_item_formato as t01','t01.id','=','tab_item.id_tab_item_formato')
-        ->where('t01.in_activo', '=', true)
+        //->where('tab_item.in_activo', '=', true)
         //->search($q, $sortBy)
         //->fecha($desde, $hasta)
         ->orderBy($sortBy, $orderBy)
@@ -217,6 +217,64 @@ class moduloController extends Controller
         DB::commit();
 
         Session::flash('msg_side_overlay', 'Registro borrado con Exito!');
+        return Redirect::to('/cms/modulo');
+
+      }catch (\Illuminate\Database\QueryException $e)
+      {
+        DB::rollback();
+        return Redirect::back()->withErrors([
+            'da_alert_form' => $e->getMessage()
+        ])->withInput( $request->all());
+      }
+    }
+
+        /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function despublicar( $id)
+    {
+      DB::beginTransaction();
+      try {
+
+        $tab_item = tab_item::find( $id);
+        $tab_item->in_activo = false;
+        $tab_item->save();
+
+        DB::commit();
+
+        Session::flash('msg_side_overlay', 'Registro despublicado con Exito!');
+        return Redirect::to('/cms/modulo');
+
+      }catch (\Illuminate\Database\QueryException $e)
+      {
+        DB::rollback();
+        return Redirect::back()->withErrors([
+            'da_alert_form' => $e->getMessage()
+        ])->withInput( $request->all());
+      }
+    }
+
+        /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function publicar( $id)
+    {
+      DB::beginTransaction();
+      try {
+
+        $tab_item = tab_item::find( $id);
+        $tab_item->in_activo = true;
+        $tab_item->save();
+
+        DB::commit();
+
+        Session::flash('msg_side_overlay', 'Registro publicado con Exito!');
         return Redirect::to('/cms/modulo');
 
       }catch (\Illuminate\Database\QueryException $e)
