@@ -126,6 +126,16 @@ class moduloController extends Controller
 
             break;
 
+            case 2:
+
+              return View::make('cms.modulo.features')->with([
+                  'data'  => $data,
+                  'tab_item_formato'  => $tab_item_formato,
+                  'tab_item_detalle'  => $tab_item_detalle
+              ]);
+
+            break;
+
             default:
                 return redirect('/cms/modulo');
 
@@ -152,9 +162,22 @@ class moduloController extends Controller
 
           try {
 
+            if ($request->hasFile('imagen')) {
+              $image           = $request->file('imagen');
+              $name            = time() . '.' . $image->getClientOriginalExtension();
+              $destinationPath = public_path('/images/media');
+              $image->move($destinationPath, $name);
+              $url = '/images/media/' . $name;
+              //$url = url('/') . '/images/media/' . $name;
+            }
+
             $tab_item = tab_item::find( $id);
             $tab_item->id_tab_item_formato = $request->get("formato");
             $tab_item->de_item = $request->get("descripcion");
+            $tab_item->de_contenido = $request->get("contenido");
+            if (!empty($url)) {
+              $tab_item->url_imagen = $url;
+            }
             $tab_item->save();
 
             DB::commit();
@@ -179,9 +202,22 @@ class moduloController extends Controller
 
           try {
 
+            if ($request->hasFile('imagen')) {
+              $image           = $request->file('imagen');
+              $name            = time() . '.' . $image->getClientOriginalExtension();
+              $destinationPath = public_path('/images/media');
+              $image->move($destinationPath, $name);
+              $url = '/images/media/' . $name;
+              //$url = url('/') . '/images/media/' . $name;
+            }
+
             $tab_item = new tab_item;
             $tab_item->id_tab_item_formato = $request->get("formato");
             $tab_item->de_item = $request->get("descripcion");
+            $tab_item->de_contenido = $request->get("contenido");
+            if (!empty($url)) {
+              $tab_item->url_imagen = $url;
+            }
             $tab_item->save();
 
             DB::commit();

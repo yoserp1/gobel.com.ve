@@ -43,9 +43,6 @@
                     </li>
                     @endforeach
                     <li class="nav-item">
-                        <a href="#features" class="nav-link">Bondades</a>
-                    </li>
-                    <li class="nav-item">
                         <a href="#aboutus" class="nav-link">Sobre Nosotros</a>
                     </li>
                     <li class="nav-item">

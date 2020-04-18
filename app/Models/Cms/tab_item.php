@@ -20,6 +20,7 @@ class tab_item extends Model
     public static $validarEditar = array(
       "formato"    => "required|numeric",
       "descripcion"    => "required",
+      "imagen"       => "image|max:2048|mimes:jpeg,png",
     );
 
     public function scopeSearch($query, $q, $sortBy)
