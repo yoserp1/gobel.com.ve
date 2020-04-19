@@ -132,6 +132,7 @@
                                 </th>
                                 <th style="width: 15%;">Descripcion</th>
                                 <th class="d-none d-sm-table-cell" style="width: 30%;">Contenido</th>
+                                <th style="width: 15%;">Tipo</th>
                                 <th class="d-none d-md-table-cell text-center" style="width: 100px;">Acciones</th>
                             </tr>
                         </thead>
@@ -139,10 +140,11 @@
                         @foreach($tab_item_detalle as $key => $value)
                             <tr>
                                 <td class="text-center">
-                                    <img class="img-fluid options-item" src="{{ asset($value->url_imagen) }}" alt="">
+                                    {{ $value->de_icono }}
                                 </td>
                                 <td class="font-w600">{{ $value->de_item_detalle }}</td>
                                 <td class="d-none d-sm-table-cell"><em class="text-muted">{{ str_limit(strip_tags($value->de_contenido), 150) }}</em></td>
+                                <td class="font-w600">{{ $value->de_item_formato }}</td>
                                 <td class="text-center">
                                     <div class="btn-group">
                                         <a href="{{ url('/cms/modulo/detalle/editar').'/'. $value->id }}">

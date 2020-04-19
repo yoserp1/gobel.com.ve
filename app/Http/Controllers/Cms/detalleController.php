@@ -4,6 +4,7 @@ namespace portal\Http\Controllers\Cms;
 //*******agregar esta linea******//
 use portal\Models\Cms\tab_item;
 use portal\Models\Cms\tab_item_detalle;
+use portal\Models\Cms\tab_item_formato;
 use portal\Models\Cms\tab_icono;
 use Validator;
 use View;
@@ -56,9 +57,14 @@ class detalleController extends Controller
             $tab_icono = tab_icono::orderBy('id','asc')
             ->get();
 
+            $tab_item_formato = tab_item_formato::orderBy('id','asc')
+            ->where('id_tab_tipo', '=', 2)
+            ->get();
+
             return View::make('cms.modulo.features.nuevo')->with([
               'data'  => $data,
-              'tab_icono'  => $tab_icono
+              'tab_icono'  => $tab_icono,
+              'tab_item_formato'  => $tab_item_formato
             ]);
 
           break;
@@ -79,7 +85,7 @@ class detalleController extends Controller
     public function editar($id)
     {
         $data = tab_item_detalle::select( 'id', 'id_tab_item', 'de_item_detalle', 'de_contenido', 'url_imagen', 'in_activo', 
-        'created_at', 'updated_at')
+        'created_at', 'updated_at', 'id_tab_icono', 'id_tab_item_formato')
         ->where('id', '=', $id)
         ->first();
 
@@ -98,8 +104,17 @@ class detalleController extends Controller
 
           case 2:
 
+            $tab_icono = tab_icono::orderBy('id','asc')
+            ->get();
+
+            $tab_item_formato = tab_item_formato::orderBy('id','asc')
+            ->where('id_tab_tipo', '=', 2)
+            ->get();
+
             return View::make('cms.modulo.features.editar')->with([
-              'data'  => $data
+              'data'  => $data,
+              'tab_icono'  => $tab_icono,
+              'tab_item_formato'  => $tab_item_formato
             ]);
 
           break;
@@ -144,6 +159,8 @@ class detalleController extends Controller
             $tab_item_detalle->id_tab_item = $request->get("item");
             $tab_item_detalle->de_item_detalle = $request->get("descripcion");
             $tab_item_detalle->de_contenido = $request->get("contenido");
+            $tab_item_detalle->id_tab_icono = $request->get("icono");
+            $tab_item_detalle->id_tab_item_formato = $request->get("formato");
             if (!empty($url)) {
                 $tab_item_detalle->url_imagen = $url;
             }
@@ -184,6 +201,8 @@ class detalleController extends Controller
             $tab_item_detalle->id_tab_item = $request->get("item");
             $tab_item_detalle->de_item_detalle = $request->get("descripcion");
             $tab_item_detalle->de_contenido = $request->get("contenido");
+            $tab_item_detalle->id_tab_icono = $request->get("icono");
+            $tab_item_detalle->id_tab_item_formato = $request->get("formato");
             if (!empty($url)) {
                 $tab_item_detalle->url_imagen = $url;
             }

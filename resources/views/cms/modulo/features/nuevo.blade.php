@@ -71,15 +71,6 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="contenido">Contenido</label>
-                            <textarea id="js-ckeditor" class="form-control {!! $errors->has('contenido') ? 'is-invalid' : '' !!}" id="contenido" name="contenido" {{ $errors->has('contenido') ? 'aria-describedby="contenido-error" aria-invalid="true"' : '' }}>
-                            {{ old('contenido') }}
-                            </textarea>
-                            @if( $errors->has('contenido') )
-                                <div id="contenido-error" class="invalid-feedback animated fadeIn">{{ $errors->first('contenido') }}</div>
-                            @endif
-                        </div>
-                        <div class="form-group">
                             <label for="icono">Icono</label>
                             <select class="custom-select {!! $errors->has('icono') ? 'is-invalid' : '' !!}" name="icono" id="icono" {{ $errors->has('icono') ? 'aria-describedby="icono-error" aria-invalid="true"' : '' }}>
                                 @foreach($tab_icono as $icono)
@@ -91,14 +82,23 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="tipo">Tipo</label>
-                            <select class="custom-select {!! $errors->has('tipo') ? 'is-invalid' : '' !!}" name="tipo" id="tipo" {{ $errors->has('tipo') ? 'aria-describedby="tipo-error" aria-invalid="true"' : '' }}>
-                                @foreach($tab_icono as $tipo)
-                                    <option value="{{ $tipo->id }}" {{ $tipo->id == $data->id_tab_tipo ? 'selected' : '' }}>{{ $tipo->de_tipo }}</option>
+                            <label for="formato">Formato</label>
+                            <select class="custom-select {!! $errors->has('formato') ? 'is-invalid' : '' !!}" name="formato" id="formato" {{ $errors->has('formato') ? 'aria-describedby="formato-error" aria-invalid="true"' : '' }}>
+                                @foreach($tab_item_formato as $formato)
+                                    <option value="{{ $formato->id }}" {{ $formato->id == $data->id_tab_item_formato ? 'selected' : '' }}>{{ $formato->de_item_formato }}</option>
                                 @endforeach
                             </select>
-                            @if( $errors->has('tipo') )
-                                <div id="tipo-error" class="invalid-feedback animated fadeIn">{{ $errors->first('tipo') }}</div>
+                            @if( $errors->has('formato') )
+                                <div id="formato-error" class="invalid-feedback animated fadeIn">{{ $errors->first('formato') }}</div>
+                            @endif
+                        </div>
+                        <div class="form-group">
+                            <label for="contenido">Contenido</label>
+                            <textarea id="js-ckeditor" class="form-control {!! $errors->has('contenido') ? 'is-invalid' : '' !!}" id="contenido" name="contenido" {{ $errors->has('contenido') ? 'aria-describedby="contenido-error" aria-invalid="true"' : '' }}>
+                            {{ old('contenido') }}
+                            </textarea>
+                            @if( $errors->has('contenido') )
+                                <div id="contenido-error" class="invalid-feedback animated fadeIn">{{ $errors->first('contenido') }}</div>
                             @endif
                         </div>
 

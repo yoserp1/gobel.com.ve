@@ -70,13 +70,28 @@
                                 <div id="descripcion-error" class="invalid-feedback animated fadeIn">{{ $errors->first('descripcion') }}</div>
                             @endif
                         </div>
-                        {{--<div class="form-group">
-                            <label for="contenido">Contenido</label>
-                            <input type="text" class="form-control {!! $errors->has('contenido') ? 'is-invalid' : '' !!}" id="contenido" name="contenido" placeholder="Contenido..." value="{{ old('contenido') }}" {{ $errors->has('contenido') ? 'aria-describedby="contenido-error" aria-invalid="true"' : '' }}>
-                            @if( $errors->has('contenido') )
-                                <div id="contenido-error" class="invalid-feedback animated fadeIn">{{ $errors->first('contenido') }}</div>
+                        <div class="form-group">
+                            <label for="icono">Icono</label>
+                            <select class="custom-select {!! $errors->has('icono') ? 'is-invalid' : '' !!}" name="icono" id="icono" {{ $errors->has('icono') ? 'aria-describedby="icono-error" aria-invalid="true"' : '' }}>
+                                @foreach($tab_icono as $icono)
+                                    <option value="{{ $icono->id }}" {{ $icono->id == $data->id_tab_icono ? 'selected' : '' }}>{{ $icono->de_icono }}</option>
+                                @endforeach
+                            </select>
+                            @if( $errors->has('icono') )
+                                <div id="icono-error" class="invalid-feedback animated fadeIn">{{ $errors->first('icono') }}</div>
                             @endif
-                        </div>--}}
+                        </div>
+                        <div class="form-group">
+                            <label for="formato">Formato</label>
+                            <select class="custom-select {!! $errors->has('formato') ? 'is-invalid' : '' !!}" name="formato" id="formato" {{ $errors->has('formato') ? 'aria-describedby="formato-error" aria-invalid="true"' : '' }}>
+                                @foreach($tab_item_formato as $formato)
+                                    <option value="{{ $formato->id }}" {{ $formato->id == $data->id_tab_item_formato ? 'selected' : '' }}>{{ $formato->de_item_formato }}</option>
+                                @endforeach
+                            </select>
+                            @if( $errors->has('formato') )
+                                <div id="formato-error" class="invalid-feedback animated fadeIn">{{ $errors->first('formato') }}</div>
+                            @endif
+                        </div>
                         <div class="form-group">
                             <label for="contenido">Contenido</label>
                             <textarea id="js-ckeditor" class="form-control {!! $errors->has('contenido') ? 'is-invalid' : '' !!}" id="contenido" name="contenido" {{ $errors->has('contenido') ? 'aria-describedby="contenido-error" aria-invalid="true"' : '' }}>
@@ -85,19 +100,6 @@
                             @if( $errors->has('contenido') )
                                 <div id="contenido-error" class="invalid-feedback animated fadeIn">{{ $errors->first('contenido') }}</div>
                             @endif
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-xl-6">
-                                <label>Imagen</label>
-                                <div class="custom-file">
-                                    <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
-                                    <input type="file" class="custom-file-input {!! $errors->has('imagen') ? 'is-invalid' : '' !!}" id="imagen" name="imagen" data-toggle="custom-file-input" {{ $errors->has('imagen') ? 'aria-describedby="imagen-error" aria-invalid="true"' : '' }}>
-                                    <label for="imagen" class="custom-file-label">{{ empty(old('imagen'))? $data->url_imagen : old('imagen') }}</label>
-                                    @if( $errors->has('imagen') )
-                                        <div id="imagen-error" class="invalid-feedback animated fadeIn">{{ $errors->first('imagen') }}</div>
-                                    @endif
-                                </div>
-                            </div>
                         </div>
 
                     </div>

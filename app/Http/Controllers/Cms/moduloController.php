@@ -88,6 +88,7 @@ class moduloController extends Controller
         $data = array( "id" => null);
 
         $tab_item_formato = tab_item_formato::orderBy('id','asc')
+        ->where('id_tab_tipo', '=', 1)
         ->get();
 
         return View::make('cms.modulo.nuevo')->with([
@@ -109,10 +110,15 @@ class moduloController extends Controller
         ->first();
 
         $tab_item_formato = tab_item_formato::orderBy('id','asc')
+        ->where('id_tab_tipo', '=', 1)
         ->get();
 
-        $tab_item_detalle = tab_item_detalle::orderBy('id','asc')
+        $tab_item_detalle = tab_item_detalle::select( 'tab_item_detalle.id', 'tab_item_detalle.in_activo', 'tab_item_detalle.created_at', 'tab_item_detalle.updated_at',
+        'id_tab_item', 'de_item_detalle', 'de_contenido', 'de_item_formato', 'de_icono')
+        ->leftjoin('tab_item_formato as t01','t01.id','=','tab_item_detalle.id_tab_item_formato')
+        ->leftjoin('tab_icono as t02','t02.id','=','tab_item_detalle.id_tab_icono')
         ->where('id_tab_item', '=', $data->id)
+        ->orderBy('tab_item_detalle.id','asc')
         ->get();
 
         switch($data->id_tab_item_formato){
