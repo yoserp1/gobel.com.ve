@@ -27,7 +27,7 @@
                 <div class="featured-inner">
                     <div class="section-title mb-4">
                         <h2>{{ $value->de_item }}</h2>
-                        <p class="section_subtitle">{{ $value->de_contenido }}</p>
+                        <p class="section_subtitle">{{ strip_tags($value->de_contenido) }}</p>
                     </div>
                     <div class="row">
                         @foreach($contenido as $key => $value_detale)
