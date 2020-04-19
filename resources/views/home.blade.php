@@ -4,11 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="Multi Purpose Html5 Landing Page">
-    <meta name="keywords" content="agency, bootstrap, business, corporate, creative, landing page, marketing, multipurpose, product, product launch, responsive, software, startup, startup landing page">
-    <meta name="author" content="ParExcellence">
+    <meta name="description" content="{{ $portal->de_description }}">
+    <meta name="keywords" content="{{ $portal->de_keywords }}">
+    <meta name="author" content="{{ $portal->de_author }}">
+    <meta name="robots" content="{{ $portal->de_robots }}">
+    <meta property="og:title" content="{{ $portal->de_og_title }}">
+    <meta property="og:site_name" content="{{ $portal->de_og_site_name }}">
+    <meta property="og:description" content="{{ $portal->de_og_description }}">
+    <meta property="og:type" content="{{ $portal->de_og_type }}">
+    <meta property="og:url" content="{{ $portal->de_og_url }}">
+    <meta property="og:image" content="{{ $portal->de_og_image }}">
     <!-- Site Title -->
-    <title>Gobel | Desarrollo de Software</title>
+    <title>{{ $portal->nb_portal }}</title>
     <!-- Site Favicon -->
     <link rel="shortcut icon" href="{{ asset('/images/favicon.ico') }}" type="image/ico">
     <!-- Bootstrap CSS -->
