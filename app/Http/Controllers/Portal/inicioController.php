@@ -47,8 +47,9 @@ class inicioController extends Controller
   public function detalle( $id_tab_item) {
 
     $data = tab_item_detalle::select( 'tab_item_detalle.id', 'tab_item_detalle.id_tab_item', 'tab_item_detalle.de_item_detalle', 'tab_item_detalle.de_contenido', 'tab_item_detalle.url_imagen', 'tab_item_detalle.in_activo', 
-    'tab_item_detalle.created_at', 'tab_item_detalle.updated_at')
+    'tab_item_detalle.created_at', 'tab_item_detalle.updated_at', 'tab_item_detalle.id_tab_item_formato', 'de_icono')
     ->join('tab_item as t01','t01.id','=','tab_item_detalle.id_tab_item')
+    ->leftJoin('tab_icono as t02','t02.id','=','tab_item_detalle.id_tab_icono')
     ->where('tab_item_detalle.id_tab_item', '=', $id_tab_item)
     ->where('t01.in_activo', '=', true)
     ->get();

@@ -3,21 +3,23 @@
     <div class="container">
         <div class="row justify-content-center">
             @foreach($contenido as $key => $value_detale)
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="app-feature-box">
-                    <div class="feature-inner wow fadeInUp" data-wow-duration="1500ms">
-                        <div class="app-feature-main">
-                            <div class="app-feature-inner">
-                                <div class="icon-block">
-                                    <i class="icon mdi mdi-rocket"></i>
+                @if ($value_detale->id_tab_item_formato == 10)
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="app-feature-box">
+                        <div class="feature-inner wow fadeInUp" data-wow-duration="1500ms">
+                            <div class="app-feature-main">
+                                <div class="app-feature-inner">
+                                    <div class="icon-block">
+                                        <i class="icon mdi {{ $value_detale->de_icono }}"></i>
+                                    </div>
+                                    <h4>{{ $value_detale->de_item_detalle }}</h4>
                                 </div>
-                                <h4>{{ $value_detale->de_item_detalle }}</h4>
                             </div>
+                            <div class="text">{{ strip_tags($value_detale->de_contenido) }}</div>
                         </div>
-                        <div class="text">{{ strip_tags($value_detale->de_contenido) }}</div>
                     </div>
                 </div>
-            </div>
+                @endif
             @endforeach
         </div>
         <div class="row align-items-center">
@@ -29,17 +31,19 @@
                     </div>
                     <div class="row">
                         @foreach($contenido as $key => $value_detale)
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="featured-list-block wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="1.5s">
-                                <div class="featured-list-inner">
-                                    <div class="icon-block">
-                                        <span class="icon mdi mdi-brush"></span>
+                            @if ($value_detale->id_tab_item_formato == 9)
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="featured-list-block wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="1.5s">
+                                    <div class="featured-list-inner">
+                                        <div class="icon-block">
+                                            <span class="icon mdi {{ $value_detale->de_icono }}"></span>
+                                        </div>
+                                        <h4>{{ $value_detale->de_item_detalle }}</h4>
+                                        <div class="text">{{ strip_tags($value_detale->de_contenido) }}</div>
                                     </div>
-                                    <h4>{{ $value_detale->de_item_detalle }}</h4>
-                                    <div class="text">{{ strip_tags($value_detale->de_contenido) }}</div>
                                 </div>
                             </div>
-                        </div>
+                            @endif
                         @endforeach
                     </div>
                 </div>

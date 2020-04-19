@@ -114,7 +114,7 @@ class moduloController extends Controller
         ->get();
 
         $tab_item_detalle = tab_item_detalle::select( 'tab_item_detalle.id', 'tab_item_detalle.in_activo', 'tab_item_detalle.created_at', 'tab_item_detalle.updated_at',
-        'id_tab_item', 'de_item_detalle', 'de_contenido', 'de_item_formato', 'de_icono')
+        'id_tab_item', 'de_item_detalle', 'de_contenido', 'de_item_formato', 'de_icono', 'url_imagen')
         ->leftjoin('tab_item_formato as t01','t01.id','=','tab_item_detalle.id_tab_item_formato')
         ->leftjoin('tab_icono as t02','t02.id','=','tab_item_detalle.id_tab_icono')
         ->where('id_tab_item', '=', $data->id)
