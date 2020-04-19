@@ -140,7 +140,7 @@ class moduloController extends Controller
                 return redirect('/cms/modulo');
 
             break;
-          }
+        }
     }
 
     /**

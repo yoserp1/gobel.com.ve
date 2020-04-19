@@ -15,12 +15,12 @@ class tab_item_detalle extends Model
     public static $validarCrear = array(
         "descripcion"    => "required",
         "contenido"    => "required",
-        "imagen"       => "required|image|max:2048|mimes:jpeg,png",
+        "imagen"       => "image|max:2048|mimes:jpeg,png",
       );
       
       public static $validarEditar = array(
         "descripcion"    => "required",
         "contenido"    => "required",
-        "imagen"       => "required|image|max:2048|mimes:jpeg,png",
+        "imagen"       => "image|max:2048|mimes:jpeg,png",
       );
 }

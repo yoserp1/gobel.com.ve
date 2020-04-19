@@ -4,6 +4,7 @@ namespace portal\Http\Controllers\Cms;
 //*******agregar esta linea******//
 use portal\Models\Cms\tab_item;
 use portal\Models\Cms\tab_item_detalle;
+use portal\Models\Cms\tab_icono;
 use Validator;
 use View;
 use Auth;
@@ -41,9 +42,33 @@ class detalleController extends Controller
         ->where('id', '=', $item)
         ->first();
 
-        return View::make('cms.modulo.detalle.nuevo')->with([
-            'data'  => $data
-        ]);
+        switch($data->id_tab_item_formato){
+          case 1:
+
+            return View::make('cms.modulo.detalle.nuevo')->with([
+              'data'  => $data
+            ]);
+
+          break;
+
+          case 2:
+
+            $tab_icono = tab_icono::orderBy('id','asc')
+            ->get();
+
+            return View::make('cms.modulo.features.nuevo')->with([
+              'data'  => $data,
+              'tab_icono'  => $tab_icono
+            ]);
+
+          break;
+
+          default:
+              return redirect('/cms/modulo/editar'.'/'.$item);
+
+          break;
+        }
+
     }
 
         /**
@@ -58,9 +83,33 @@ class detalleController extends Controller
         ->where('id', '=', $id)
         ->first();
 
-        return View::make('cms.modulo.detalle.editar')->with([
-          'data'  => $data
-        ]);
+        $tab_item = tab_item::select( 'id_tab_item_formato')
+        ->where('id', '=', $data->id_tab_item)
+        ->first();
+
+        switch($tab_item->id_tab_item_formato){
+          case 1:
+
+            return View::make('cms.modulo.detalle.editar')->with([
+              'data'  => $data
+            ]);
+
+          break;
+
+          case 2:
+
+            return View::make('cms.modulo.features.editar')->with([
+              'data'  => $data
+            ]);
+
+          break;
+
+          default:
+              return redirect('/cms/modulo/editar'.'/'.$data->id_tab_item);
+
+          break;
+        }
+
     }
 
         /**
