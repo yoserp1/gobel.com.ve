@@ -50,9 +50,6 @@
                     </li>
                     @endforeach
                     <li class="nav-item">
-                        <a href="#showcase" class="nav-link">Galeria</a>
-                    </li>
-                    <li class="nav-item">
                         <a href="#price" class="nav-link">Precios</a>
                     </li>
                     <li class="nav-item">
@@ -96,6 +93,12 @@
 
             @breakswitch
 
+        @case(5)
+
+            @include('seccion.showcase', ['contenido' => $hijo->detalle( $value->id) ])
+
+            @breakswitch
+
         @default
             <span>Something went wrong, please try again</span>
             @breakswitch
@@ -103,56 +106,6 @@
 
     @endforeach
 
-    <!--Start Showcase-->
-    <section class="section gray-bg" id="showcase">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title text-center mb-4">
-                        <h2>Showcase</h2>
-                        <p class="section_subtitle mx-auto">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="owl-carousel owl-theme showcase-slider wow fadeIn" data-wow-duration="1000ms">
-                        <div class="item">
-                            <div class="showcase-card">
-                                <img src="images/screenshots/app-screen-1.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="showcase-card">
-                                <img src="images/screenshots/app-screen-2.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="showcase-card">
-                                <img src="images/screenshots/app-screen-3.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="showcase-card">
-                                <img src="images/screenshots/app-screen-4.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="showcase-card">
-                                <img src="images/screenshots/app-screen-5.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="showcase-card">
-                                <img src="images/screenshots/app-screen-6.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--End Showcase-->
     <!-- Start Testimonial -->
     <section class="section bg-gradient" id="client">
         <div id="particles-js1">

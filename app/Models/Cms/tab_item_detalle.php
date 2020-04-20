@@ -13,14 +13,14 @@ class tab_item_detalle extends Model
     protected $table = 'tab_item_detalle';
 
     public static $validarCrear = array(
-        "descripcion"    => "required",
-        "contenido"    => "required",
+        //"descripcion"    => "required",
+        //"contenido"    => "required",
         "imagen"       => "image|max:2048|mimes:jpeg,png",
       );
       
       public static $validarEditar = array(
-        "descripcion"    => "required",
-        "contenido"    => "required",
+        //"descripcion"    => "required",
+        //"contenido"    => "required",
         "imagen"       => "image|max:2048|mimes:jpeg,png",
       );
 }
