@@ -63,21 +63,6 @@
                         </div>
                         @endif
 
-                        <div class="form-group">
-                            <label for="descripcion">Descripcion</label>
-                            <input type="text" class="form-control {!! $errors->has('descripcion') ? 'is-invalid' : '' !!}" id="descripcion" name="descripcion" placeholder="Descripcion..." value="{{ empty(old('descripcion'))? $data->de_item_detalle : old('descripcion') }}" {{ $errors->has('descripcion') ? 'aria-describedby="descripcion-error" aria-invalid="true"' : '' }}>
-                            @if( $errors->has('descripcion') )
-                                <div id="descripcion-error" class="invalid-feedback animated fadeIn">{{ $errors->first('descripcion') }}</div>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="contenido">Contenido</label>
-                            <textarea class="form-control {!! $errors->has('contenido') ? 'is-invalid' : '' !!}" id="contenido" name="contenido" rows="3" placeholder="Contenido.." {{ $errors->has('contenido') ? 'aria-describedby="contenido-error" aria-invalid="true"' : '' }}>{{ empty(old('contenido'))? $data->de_contenido : old('contenido') }}</textarea>
-                            <div class="form-text text-muted font-size-sm font-italic">Contenido de la seccion en la web.</div>
-                            @if( $errors->has('contenido') )
-                                <div id="contenido-error" class="invalid-feedback animated fadeIn">{{ $errors->first('contenido') }}</div>
-                            @endif
-                        </div>
                         <div class="form-group row">
                             <div class="col-xl-6">
                                 <label>Imagen</label>
