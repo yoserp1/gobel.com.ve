@@ -99,6 +99,12 @@
 
             @breakswitch
 
+        @case(6)
+
+            @include('seccion.client', ['contenido' => $hijo->detalle( $value->id) ])
+
+            @breakswitch
+
         @default
             <span>Something went wrong, please try again</span>
             @breakswitch
@@ -106,88 +112,6 @@
 
     @endforeach
 
-    <!-- Start Testimonial -->
-    <section class="section bg-gradient" id="client">
-        <div id="particles-js1">
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title text-center mb-4">
-                        <h2 class="text-white">What People Say</h2>
-                        <p class="text-white section_subtitle mx-auto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="owl-carousel owl-theme testimonial-slider wow fadeIn" data-wow-duration="1000ms">
-                        <div class="item">
-                            <div class="testimonial-card shadow-md">
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
-                            </div>
-                            <div class="user-txt">
-                                <div class="user-pics"><img  src="images/testi/testi-1.png" alt=""></div>
-                                <div class="use-info">
-                                    <h6 class="heading text-white">Jack Jordan</h6>
-                                    <p class="sub-heading text-white">Mediapp User</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-card shadow-md">
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
-                            </div>
-                            <div class="user-txt">
-                                <div class="user-pics"><img src="images/testi/testi-1.png" alt=""></div>
-                                <div class="user-info">
-                                    <h6 class="heading text-white">Jack Jordan</h6>
-                                    <p class="sub-heading text-white">Mediapp User</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-card shadow-md">
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
-                            </div>
-                            <div class="user-txt">
-                                <div class="user-pics"><img src="images/testi/testi-1.png" alt=""></div>
-                                <div class="user-info">
-                                    <h6 class="heading text-white">Jack Jordan</h6>
-                                    <p class="sub-heading text-white">Mediapp User</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-card shadow-md">
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
-                            </div>
-                            <div class="user-txt">
-                                <div class="user-pics"><img src="images/testi/testi-1.png" alt=""></div>
-                                <div class="user-info">
-                                    <h6 class="heading text-white">Jack Jordan</h6>
-                                    <p class="sub-heading text-white">Mediapp User</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-card shadow-md">
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
-                            </div>
-                            <div class="user-txt">
-                                <div class="user-pics"><img src="images/testi/testi-1.png" alt=""></div>
-                                <div class="user-info">
-                                    <h6 class="heading text-white">Jack Jordan</h6>
-                                    <p class="sub-heading text-white">Mediapp User</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Testimonial -->
     <!-- Start Price -->
     <section class="section" id="price">
         <div class="container">
