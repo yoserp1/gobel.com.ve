@@ -70,18 +70,10 @@
                                 <div id="descripcion-error" class="invalid-feedback animated fadeIn">{{ $errors->first('descripcion') }}</div>
                             @endif
                         </div>
-                        {{--<div class="form-group">
-                            <label for="contenido">Contenido</label>
-                            <input type="text" class="form-control {!! $errors->has('contenido') ? 'is-invalid' : '' !!}" id="contenido" name="contenido" placeholder="Contenido..." value="{{ old('contenido') }}" {{ $errors->has('contenido') ? 'aria-describedby="contenido-error" aria-invalid="true"' : '' }}>
-                            @if( $errors->has('contenido') )
-                                <div id="contenido-error" class="invalid-feedback animated fadeIn">{{ $errors->first('contenido') }}</div>
-                            @endif
-                        </div>--}}
                         <div class="form-group">
                             <label for="contenido">Contenido</label>
-                            <textarea id="js-ckeditor" class="form-control {!! $errors->has('contenido') ? 'is-invalid' : '' !!}" id="contenido" name="contenido" {{ $errors->has('contenido') ? 'aria-describedby="contenido-error" aria-invalid="true"' : '' }}>
-                            {{ empty(old('contenido'))? $data->de_contenido : old('contenido') }}
-                            </textarea>
+                            <textarea class="form-control {!! $errors->has('contenido') ? 'is-invalid' : '' !!}" id="contenido" name="contenido" rows="3" placeholder="Contenido.." {{ $errors->has('contenido') ? 'aria-describedby="contenido-error" aria-invalid="true"' : '' }}>{{ empty(old('contenido'))? $data->de_contenido : old('contenido') }}</textarea>
+                            <div class="form-text text-muted font-size-sm font-italic">Contenido de la seccion en la web.</div>
                             @if( $errors->has('contenido') )
                                 <div id="contenido-error" class="invalid-feedback animated fadeIn">{{ $errors->first('contenido') }}</div>
                             @endif
