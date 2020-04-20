@@ -86,6 +86,23 @@ class detalleController extends Controller
 
           break;
 
+          case 5:
+
+            $tab_icono = tab_icono::orderBy('id','asc')
+            ->get();
+
+            $tab_item_formato = tab_item_formato::orderBy('id','asc')
+            ->where('id_tab_tipo', '=', 2)
+            ->get();
+
+            return View::make('cms.modulo.showcase.nuevo')->with([
+              'data'  => $data,
+              'tab_icono'  => $tab_icono,
+              'tab_item_formato'  => $tab_item_formato
+            ]);
+
+          break;
+
           default:
               return redirect('/cms/modulo/editar'.'/'.$item);
 
@@ -146,6 +163,23 @@ class detalleController extends Controller
             ->get();
 
             return View::make('cms.modulo.howitworks.editar')->with([
+              'data'  => $data,
+              'tab_icono'  => $tab_icono,
+              'tab_item_formato'  => $tab_item_formato
+            ]);
+
+          break;
+
+          case 5:
+
+            $tab_icono = tab_icono::orderBy('id','asc')
+            ->get();
+
+            $tab_item_formato = tab_item_formato::orderBy('id','asc')
+            ->where('id_tab_tipo', '=', 2)
+            ->get();
+
+            return View::make('cms.modulo.showcase.editar')->with([
               'data'  => $data,
               'tab_icono'  => $tab_icono,
               'tab_item_formato'  => $tab_item_formato
