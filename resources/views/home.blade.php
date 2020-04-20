@@ -55,7 +55,7 @@
                 </ul>
             </div>
             <div class="contact_btn">
-                <a href="#contact" class="btn btn-sm">CONTACTANOS</a>
+                <a href="https://clientes.gobel.com.ve/" class="btn btn-sm"><b>Zona Clientes</b></a>
                 <button class="navbar-toggler ml-2 p-0" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="mdi mdi-menu"></i>
                 </button>
@@ -251,7 +251,7 @@
     <!-- End FAQ's -->
     <!-- Start Footer -->
     <footer class="footer theme-bg overflow-hidden pb-4">
-        <div class="container footer-top mb-4">
+        {{--<div class="container footer-top mb-4">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title text-center mb-4">
@@ -271,15 +271,15 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div>--}}
         </div>
         <div class="container footer-bottom">
             <div class="row">
                 <div class="col-lg-4">
                     <div class="foot_logo">
-                        <img src="images/logo.png" class="img-fluid d-block"  alt="">
+                        <img src="{{ asset('images/gobel.png') }}" class="img-fluid d-block"  alt="">
                     </div>
-                    <p class="mt-4 text-left ftr-about">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    <p class="mt-4 text-left ftr-about">Nuestras Redes Sociales.</p>
                     <div class="mt-4">
                         <ul class="fot_social list-inline mt-4">
                             <li class="list-inline-item"><a href="#" class="social-icon"><i class="mdi mdi-facebook"></i></a></li>
@@ -290,40 +290,37 @@
                     </div>
                 </div>
                 <div class="col-lg-2 col-sm-4">
-                    <h5 class="footer-title">Quick Links</h5>
+                    <h5 class="footer-title">Enlaces Rápidos</h5>
                     <ul class="footer_menu_list list-unstyled mb-0 mt-4">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Features</a></li>
-                        <li><a href="#">Client</a></li>
-                        <li><a href="#">Contact</a></li>
+                        @foreach($item as $key => $value)
+                        <li><a href="#">{{ $value->de_item }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="col-lg-2 col-sm-4">
-                    <h5 class="footer-title">Support</h5>
+                    <h5 class="footer-title">Soporte</h5>
                     <ul class="footer_menu_list list-unstyled mb-0 mt-4">
-                        <li><a href="#">Help & Support</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#{{ $value->de_item_formato }}">Servicio de asistencia</a></li>
+                        <li><a href="#">Política de privacidad</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-sm-4">
-                    <h5 class="footer-title">Quick Contact</h5>
+                    <h5 class="footer-title">Contacto Rápido</h5>
                     <ul class="footer_menu_list list-unstyled mb-0 mt-4 contact-menu-list">
                         <li>
                             <i class="md-icon mdi mdi-map-marker"></i>
                             <a href="https://www.google.com/maps" target="_blank">
-                                555 NOrth Orchard Street
-                                Kings Mountain, NY 28086
+                                Maracaibo, Zulia
                             </a>
                         </li>
-                        <li><i class="md-icon mdi mdi-email-outline"></i><a href="mailto:info@yourdomain.com">info@yourdomain.com</a></li>
-                        <li><i class="md-icon mdi mdi-phone-in-talk"></i><a href="tel:+12453698741">+1 245 369 8741</a></li>
+                        <li><i class="md-icon mdi mdi-email-outline"></i><a href="mailto:info@yourdomain.com">info@gobel.com.ve</a></li>
+                        <li><i class="md-icon mdi mdi-phone-in-talk"></i><a href="tel:+12453698741">+58 0424 000 0000</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-12">
                     <div class="foot_desc mt-4 pt-4">
-                        <p class="mb-0 text-center">2020 &copy; <span class="text-white font-weight-bold">Gobel.</span> Design by ParExcellence.</p>
+                        <p class="mb-0 text-center">2020 &copy; <span class="text-white font-weight-bold">Gobel.</span></p>
                     </div>
                 </div>
             </div>
