@@ -182,6 +182,16 @@ class moduloController extends Controller
 
             break;
 
+            case 7:
+
+              return View::make('cms.modulo.price')->with([
+                  'data'  => $data,
+                  'tab_item_formato'  => $tab_item_formato,
+                  'tab_item_detalle'  => $tab_item_detalle
+              ]);
+
+            break;
+
             default:
                 return redirect('/cms/modulo');
 

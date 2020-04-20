@@ -120,6 +120,23 @@ class detalleController extends Controller
 
           break;
 
+          case 7:
+
+            $tab_icono = tab_icono::orderBy('id','asc')
+            ->get();
+
+            $tab_item_formato = tab_item_formato::orderBy('id','asc')
+            ->where('id_tab_tipo', '=', 2)
+            ->get();
+
+            return View::make('cms.modulo.price.nuevo')->with([
+              'data'  => $data,
+              'tab_icono'  => $tab_icono,
+              'tab_item_formato'  => $tab_item_formato
+            ]);
+
+          break;
+
           default:
               return redirect('/cms/modulo/editar'.'/'.$item);
 
@@ -214,6 +231,23 @@ class detalleController extends Controller
             ->get();
 
             return View::make('cms.modulo.client.editar')->with([
+              'data'  => $data,
+              'tab_icono'  => $tab_icono,
+              'tab_item_formato'  => $tab_item_formato
+            ]);
+
+          break;
+
+          case 7:
+
+            $tab_icono = tab_icono::orderBy('id','asc')
+            ->get();
+
+            $tab_item_formato = tab_item_formato::orderBy('id','asc')
+            ->where('id_tab_tipo', '=', 2)
+            ->get();
+
+            return View::make('cms.modulo.price.editar')->with([
               'data'  => $data,
               'tab_icono'  => $tab_icono,
               'tab_item_formato'  => $tab_item_formato

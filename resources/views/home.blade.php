@@ -50,9 +50,6 @@
                     </li>
                     @endforeach
                     <li class="nav-item">
-                        <a href="#price" class="nav-link">Precios</a>
-                    </li>
-                    <li class="nav-item">
                         <a href="#faq" class="nav-link">Preguntas Frecuentes</a>
                     </li>
                 </ul>
@@ -105,6 +102,12 @@
 
             @breakswitch
 
+        @case(7)
+
+            @include('seccion.price', ['contenido' => $hijo->detalle( $value->id) ])
+
+            @breakswitch
+
         @default
             <span>Something went wrong, please try again</span>
             @breakswitch
@@ -112,70 +115,6 @@
 
     @endforeach
 
-    <!-- Start Price -->
-    <section class="section" id="price">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title text-center mb-4">
-                        <h2>Choose Your Pricing Plan</h2>
-                        <p class="section_subtitle mx-auto">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4 justify-content-center">
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="package-box wow fadeIn" data-wow-delay="0s" data-wow-duration="1500ms">
-                        <div class="package-box-inner">
-                            <div class="package-hover-lines"></div>
-                            <div class="package-title">Starter</div>
-                            <h2>$15.00</h2>
-                            <ul class="package-list">
-                                <li>Single License</li>
-                                <li>0 Team Members</li>
-                                <li>99 mb of Storage</li>
-                                <li>1.00 Project</li>
-                            </ul>
-                            <a href="#" class="theme-btn">get started</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="package-box wow fadeIn" data-wow-delay="0.3s" data-wow-duration="1500ms">
-                        <div class="package-box-inner">
-                            <div class="package-hover-lines"></div>
-                            <div class="package-title">Proffesional</div>
-                            <h2>$15.00</h2>
-                            <ul class="package-list">
-                                <li>Single License</li>
-                                <li>0 Team Members</li>
-                                <li>99 mb of Storage</li>
-                                <li>1.00 Project</li>
-                            </ul>
-                            <a href="#" class="theme-btn">get started</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 ">
-                    <div class="package-box wow fadeIn m-box-0" data-wow-delay="0.6s" data-wow-duration="1500ms">
-                        <div class="package-box-inner">
-                            <div class="package-hover-lines"></div>
-                            <div class="package-title">Business</div>
-                            <h2>$15.00</h2>
-                            <ul class="package-list">
-                                <li>Single License</li>
-                                <li>0 Team Members</li>
-                                <li>99 mb of Storage</li>
-                                <li>1.00 Project</li>
-                            </ul>
-                            <a href="#" class="theme-btn">get started</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Price -->
     <!-- Start Parallax -->
     <section class="parallax parallax-box section" id="contact">
         <div class="parallax-content">
