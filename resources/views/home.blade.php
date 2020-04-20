@@ -293,14 +293,14 @@
                     <h5 class="footer-title">Enlaces Rápidos</h5>
                     <ul class="footer_menu_list list-unstyled mb-0 mt-4">
                         @foreach($item as $key => $value)
-                        <li><a href="#">{{ $value->de_item }}</a></li>
+                        <li><a href="#{{ $value->de_item_formato }}">{{ $value->de_item }}</a></li>
                         @endforeach
                     </ul>
                 </div>
                 <div class="col-lg-2 col-sm-4">
                     <h5 class="footer-title">Soporte</h5>
                     <ul class="footer_menu_list list-unstyled mb-0 mt-4">
-                        <li><a href="#{{ $value->de_item_formato }}">Servicio de asistencia</a></li>
+                        <li><a href="#">Servicio de asistencia</a></li>
                         <li><a href="#">Política de privacidad</a></li>
                         <li><a href="#">Términos y condiciones</a></li>
                     </ul>
