@@ -50,9 +50,6 @@
                     </li>
                     @endforeach
                     <li class="nav-item">
-                        <a href="#howitworks" class="nav-link">Como Funciona</a>
-                    </li>
-                    <li class="nav-item">
                         <a href="#showcase" class="nav-link">Galeria</a>
                     </li>
                     <li class="nav-item">
@@ -93,6 +90,12 @@
 
             @breakswitch
 
+        @case(4)
+
+            @include('seccion.howitworks', ['contenido' => $hijo->detalle( $value->id) ])
+
+            @breakswitch
+
         @default
             <span>Something went wrong, please try again</span>
             @breakswitch
@@ -100,51 +103,6 @@
 
     @endforeach
 
-    <!-- Start How-it-Work -->
-    <section class="section" id="howitworks">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title text-center mb-4">
-                        <h2>How It Work?</h2>
-                        <p class="section_subtitle mx-auto">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="how-works-block mt-4">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="how-works-box wow fadeInUp" data-wow-duration="1000ms">
-                            <img src="images/works/1.png"  class="img-fluid mx-auto d-block" alt="">
-                            <div class="text-center">
-                                <h4 class="mt-4">Choose a plan</h4>
-                                <p class="mb-0 mt-4">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="how-works-box wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="0.3s">
-                            <img src="images/works/2.png"  class="img-fluid mx-auto d-block" alt="">
-                            <div class="text-center">
-                                <h4 class="mt-4">Payment method</h4>
-                                <p class="mb-0 mt-4">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="how-works-box m-box-0 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="0.6s">
-                            <img src="images/works/3.png"  class="img-fluid mx-auto d-block" alt="">
-                            <div class="text-center">
-                                <h4 class="mt-4">Let's work</h4>
-                                <p class="mb-0 mt-4">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End How-it-Work -->
     <!--Start Showcase-->
     <section class="section gray-bg" id="showcase">
         <div class="container">
