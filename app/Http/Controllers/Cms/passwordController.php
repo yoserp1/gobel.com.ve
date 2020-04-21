@@ -31,7 +31,7 @@ class passwordController extends Controller
 	*/
 	public function __construct()
 	{
-		//$this->middleware('optimizar');
+		$this->middleware('optimizar');
 		$this->middleware('guest');
     }
     /**

@@ -38,7 +38,7 @@ class autenticarController extends Controller
     public function __construct(Guard $auth)
     {
         $this->auth = $auth;
-        //$this->middleware('optimizar');
+        $this->middleware('optimizar');
         $this->middleware('guest', ['except' => 'salir']);
     }
 
