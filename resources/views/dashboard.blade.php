@@ -18,12 +18,11 @@
 <div class="bg-body-light">
     <div class="content content-full">
         <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-            <h1 class="flex-sm-fill font-size-h2 font-w400 mt-2 mb-0 mb-sm-2">Manage All Posts</h1>
+            <h1 class="flex-sm-fill font-size-h2 font-w400 mt-2 mb-0 mb-sm-2">Cotizaciones</h1>
             <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item">Pages</li>
-                    <li class="breadcrumb-item">Blog</li>
-                    <li class="breadcrumb-item active" aria-current="page">Manage</li>
+                    <li class="breadcrumb-item">Inicio</li>
+                    <li class="breadcrumb-item active" aria-current="page">Cotizaciones</li>
                 </ol>
             </nav>
         </div>
@@ -33,7 +32,7 @@
 
 <!-- Page Content -->
 <div class="content content-full">
-    <!-- Posts Statistics -->
+    {{--<!-- Posts Statistics -->
     <div class="row text-center">
         <div class="col-6 col-xl-3">
             <!-- All Posts -->
@@ -112,12 +111,12 @@
             <!-- END New Post -->
         </div>
     </div>
-    <!-- Post Statistics -->
+    <!-- Post Statistics -->--}}
 
     <!-- Posts -->
     <div class="block">
         <div class="block-header block-header-default">
-            <h3 class="block-title">Posts (150)</h3>
+            <h3 class="block-title">Cotizacion (0)</h3>
         </div>
         <div class="block-content">
             <!-- Search Posts -->
