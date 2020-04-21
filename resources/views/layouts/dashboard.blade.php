@@ -4,23 +4,23 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <title>Dashmix - Bootstrap 4 Admin Template &amp; UI Framework</title>
+        <title>{{ Session::get('portal.0.nb_portal') }}</title>
 
-        <meta name="description" content="Dashmix - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-        <meta name="author" content="pixelcave">
-        <meta name="robots" content="noindex, nofollow">
-        <meta property="og:title" content="Dashmix - Bootstrap 4 Admin Template &amp; UI Framework | DEMO">
-        <meta property="og:site_name" content="Dashmix">
-        <meta property="og:description" content="Dashmix - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest | This is the demo of Dashmix! You need to purchase a license for legal use! | DEMO">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="">
-        <meta property="og:image" content="">
+        <meta name="description" content="{{ Session::get('portal.0.nb_portal') }}">
+        <meta name="author" content="{{ Session::get('portal.0.de_author') }}">
+        <meta name="robots" content="{{ Session::get('portal.0.de_robots') }}">
+        <meta property="og:title" content="{{ Session::get('portal.0.de_og_title') }}">
+        <meta property="og:site_name" content="{{ Session::get('portal.0.de_og_site_name') }}">
+        <meta property="og:description" content="{{ Session::get('portal.0.de_og_description') }}">
+        <meta property="og:type" content="{{ Session::get('portal.0.de_og_type') }}">
+        <meta property="og:url" content="{{ Session::get('portal.0.de_og_url') }}">
+        <meta property="og:image" content="{{ Session::get('portal.0.de_og_image') }}">
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- Icons -->
-        <link rel="shortcut icon" href="{{ asset('assets/media/favicons/favicon.png') }}">
+        <link rel="shortcut icon" href="{{ asset('/images/favicon.ico') }}" type="image/ico">
         <link rel="icon" sizes="192x192" type="image/png" href="{{ asset('assets/media/favicons/favicon-192x192.png') }}">
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/media/favicons/apple-touch-icon-180x180.png') }}">
 

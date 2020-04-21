@@ -94,7 +94,10 @@ class autenticarController extends Controller
 			->where('tab_usuario.in_activo', '=', TRUE)
 			->first();
   
-			$portal = tab_portal::select('id')
+			$portal = tab_portal::select( 'id', 'nb_portal', 'nb_cms', 'de_description', 'de_keywords', 'de_author', 
+			'de_robots', 'de_og_title', 'de_og_site_name', 'de_og_description', 'de_og_type', 
+			'de_og_url', 'de_og_image', 'url_shortcut_icon', 'in_activo', 'created_at', 
+			'updated_at', 'de_analytics')
 			->where('id', '=', 1)->get()->toArray();
   
 			Session::put('usuario', $data);
