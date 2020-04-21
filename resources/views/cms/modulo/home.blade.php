@@ -35,12 +35,12 @@
                 <a class="btn btn-light" href="{{ URL::to('cms/modulo') }}">
                     <i class="fa fa-arrow-left mr-1"></i> Volver
                 </a>
-                {{--<div class="block-options">
+                <div class="block-options">
                     <div class="custom-control custom-switch custom-control-success">
-                        <input type="checkbox" class="custom-control-input" id="dm-post-edit-active" name="dm-post-edit-active" checked>
-                        <label class="custom-control-label" for="dm-post-edit-active">Set post as active</label>
+                        <input type="checkbox" class="custom-control-input" id="in_menu" name="in_menu" checked>
+                        <label class="custom-control-label" for="in_menu">Mostrar en Menú</label>
                     </div>
-                </div>--}}
+                </div>
             </div>
             <div class="block-content">
                 <div class="row justify-content-center push">
