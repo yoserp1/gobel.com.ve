@@ -37,7 +37,7 @@
                 </a>
                 <div class="block-options">
                     <div class="custom-control custom-switch custom-control-success">
-                        <input type="checkbox" class="custom-control-input" id="in_menu" name="in_menu" checked>
+                        <input type="checkbox" class="custom-control-input" id="in_menu" name="in_menu">
                         <label class="custom-control-label" for="in_menu">Mostrar en Menú</label>
                     </div>
                 </div>
