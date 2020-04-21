@@ -117,8 +117,8 @@
                                 <th class="text-center" style="width: 100px;">
                                     <i class="far fa-images"></i>
                                 </th>
-                                <th style="width: 15%;">Descripcion</th>
-                                <th class="d-none d-sm-table-cell" style="width: 30%;">Contenido</th>
+                                <th style="width: 25%;">Descripcion</th>
+                                <th class="d-none d-sm-table-cell" style="width: 40%;">Contenido</th>
                                 <th class="d-none d-md-table-cell text-center" style="width: 100px;">Acciones</th>
                             </tr>
                         </thead>

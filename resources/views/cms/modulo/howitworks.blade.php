@@ -114,12 +114,12 @@
                     <table class="table table-bordered table-striped table-vcenter">
                         <thead class="thead-light">
                             <tr>
-                                <th class="text-center" style="width: 100px;">
+                                <th class="text-center" style="width: 20%;">
                                     <i class="far fa-images"></i>
                                 </th>
-                                <th style="width: 15%;">Descripcion</th>
+                                <th style="width: 45%;">Descripcion</th>
                                 <th class="d-none d-sm-table-cell" style="width: 30%;">Contenido</th>
-                                <th class="d-none d-md-table-cell text-center" style="width: 100px;">Acciones</th>
+                                <th class="d-none d-md-table-cell text-center" style="width: 20%;">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
