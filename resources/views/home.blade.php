@@ -49,9 +49,6 @@
                         <a href="#{{ $value->de_item_formato }}" class="nav-link">{{ $value->de_item }}</a>
                     </li>
                     @endforeach
-                    <li class="nav-item">
-                        <a href="#faq" class="nav-link">Preguntas Frecuentes</a>
-                    </li>
                 </ul>
             </div>
             <div class="contact_btn">
@@ -105,6 +102,12 @@
         @case(7)
 
             @include('seccion.price', ['contenido' => $hijo->detalle( $value->id) ])
+
+            @breakswitch
+
+        @case(8)
+
+            @include('seccion.faq', ['contenido' => $hijo->detalle( $value->id) ])
 
             @breakswitch
 
@@ -164,91 +167,7 @@
         </div>
     </section>
     <!-- End Parallax -->
-    <!-- Start FAQ's -->
-    <section id="faq" class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title text-center mb-4">
-                        <h2>Frequently Asked</h2>
-                        <p class="section_subtitle mx-auto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div id="accordion" class="faq-accordion-panel wow fadeInUp" data-wow-duration="1500ms">
-                        <div class="question-card shadow-sm active">
-                            <div class="card-header p-0" id="headingOne">
-                                <h4 class="mb-0">
-                                    <button class="btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"><span>1. Lorem Ipsum Dolor Sit?</span><span><i class="mdi mdi-menu-down caret-icon"></i></span></button>
-                                </h4>
-                            </div>
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                <div class="card-body">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="question-card shadow-sm">
-                            <div class="card-header p-0" id="headingTwo">
-                                <h4 class="mb-0">
-                                    <button class="btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><span>2. Amet Consectetur Adipisicing?</span><span><i class="mdi mdi-menu-down caret-icon"></i></span></button>
-                                </h4>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                <div class="card-body">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="question-card shadow-sm">
-                            <div class="card-header p-0" id="headingThree">
-                                <h4 class="mb-0">
-                                    <button class="btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><span>3. Elit Sed Do Eiusmo?</span><span><i class="mdi mdi-menu-down caret-icon"></i></span></button>
-                                </h4>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                <div class="card-body">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="question-card shadow-sm">
-                            <div class="card-header p-0" id="headingFour">
-                                <h4 class="mb-0">
-                                    <button class="btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour"><span>4. Ea Commodo Consequat?</span><span><i class="mdi mdi-menu-down caret-icon"></i></span></button>
-                                </h4>
-                            </div>
-                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-                                <div class="card-body">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="wow fadeIn" data-wow-duration="1500ms">
-                        <img src="images/faqs.png" class="img-fluid" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End FAQ's -->
+
     <!-- Start Footer -->
     <footer class="footer theme-bg overflow-hidden pb-4">
         {{--<div class="container footer-top mb-4">

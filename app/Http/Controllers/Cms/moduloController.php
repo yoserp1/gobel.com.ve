@@ -192,6 +192,16 @@ class moduloController extends Controller
 
             break;
 
+            case 8:
+
+              return View::make('cms.modulo.faq')->with([
+                  'data'  => $data,
+                  'tab_item_formato'  => $tab_item_formato,
+                  'tab_item_detalle'  => $tab_item_detalle
+              ]);
+
+            break;
+
             default:
                 return redirect('/cms/modulo');
 
