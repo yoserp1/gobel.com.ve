@@ -108,6 +108,12 @@
                                 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" title="Borrar" data-target="#borrar" data-item_id="{{ $value->id }}" >
                                     <i class="fa fa-times"></i>
                                 </button>
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Subir" onclick="location.href='{{ url('/cms/modulo/arriba').'/'. $value->id }}'">
+                                    <i class="fa fa-arrow-alt-circle-up"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Bajar" onclick="location.href='{{ url('/cms/modulo/abajo').'/'. $value->id }}'">
+                                    <i class="fa fa-arrow-alt-circle-down"></i>
+                                </button>
                             </div>
                         </td>
                     </tr>
