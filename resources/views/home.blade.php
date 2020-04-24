@@ -52,7 +52,7 @@
                 </ul>
             </div>
             <div class="contact_btn">
-                <a href="https://clientes.gobel.com.ve/" class="btn btn-sm"><b>Zona Clientes</b></a>
+                <a href="http://clientes.gobel.com.ve/" class="btn btn-sm"><b>Zona Clientes</b></a>
                 <button class="navbar-toggler ml-2 p-0" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="mdi mdi-menu"></i>
                 </button>
