@@ -359,7 +359,7 @@ class moduloController extends Controller
       }
     }
 
-        /**
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -377,6 +377,64 @@ class moduloController extends Controller
         DB::commit();
 
         Session::flash('msg_side_overlay', 'Registro publicado con Exito!');
+        return Redirect::to('/cms/modulo');
+
+      }catch (\Illuminate\Database\QueryException $e)
+      {
+        DB::rollback();
+        return Redirect::back()->withErrors([
+            'da_alert_form' => $e->getMessage()
+        ])->withInput( $request->all());
+      }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function arriba( $id)
+    {
+      DB::beginTransaction();
+      try {
+
+        /*$tab_item = tab_item::find( $id);
+        $tab_item->in_activo = true;
+        $tab_item->save();*/
+
+        DB::commit();
+
+        Session::flash('msg_side_overlay', 'Posicion cambiada con Exito!');
+        return Redirect::to('/cms/modulo');
+
+      }catch (\Illuminate\Database\QueryException $e)
+      {
+        DB::rollback();
+        return Redirect::back()->withErrors([
+            'da_alert_form' => $e->getMessage()
+        ])->withInput( $request->all());
+      }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function abajo( $id)
+    {
+      DB::beginTransaction();
+      try {
+
+        /*$tab_item = tab_item::find( $id);
+        $tab_item->in_activo = true;
+        $tab_item->save();*/
+
+        DB::commit();
+
+        Session::flash('msg_side_overlay', 'Posicion cambiada con Exito!');
         return Redirect::to('/cms/modulo');
 
       }catch (\Illuminate\Database\QueryException $e)
