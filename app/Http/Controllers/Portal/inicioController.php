@@ -42,7 +42,7 @@ class inicioController extends Controller
     $tab_item = tab_item::select( 'tab_item.id', 'de_item', 'de_contenido', 'de_item_formato', 'tab_item.id_tab_item_formato', 'tab_item.url_imagen')
     ->join('tab_item_formato as t01','t01.id','=','tab_item.id_tab_item_formato')
     ->where('tab_item.in_activo', '=', true)
-    ->orderBy('tab_item.id', 'ASC')
+    ->orderBy('tab_item.nu_orden', 'ASC')
     ->get();
 
     return View::make('home')->with([
