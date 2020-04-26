@@ -119,32 +119,45 @@
             <h3 class="block-title">Cotizacion (0)</h3>
         </div>
         <div class="block-content">
-            <!-- Search Posts -->
-            <form class="push" action="be_pages_blog_post_manage.html" method="POST">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search Posts..">
-                    <div class="input-group-append">
-                        <span class="input-group-text">
-                            <i class="fa fa-fw fa-search"></i>
-                        </span>
+            <!-- Search -->
+            <form action="{{ url('/cms/inicio') }}" method="get">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <label>
+                            <select name="perPage" class="custom-select" value="{{ $perPage }}">
+                                @foreach(['5','10','20'] as $page)
+                                <option @if($page == $perPage) selected @endif value="{{ $page }}">{{ $page }}</option>
+                                @endforeach
+                            </select>
+                        </label>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="q" name="q" value="{{ $q }}" placeholder="Buscar...">
+                            <div class="input-group-append">
+                                <button type="submit" class="input-group-text">
+                                    <i class="fa fa-fw fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
-            <!-- END Search Posts -->
+            <!-- END Search -->
 
             <!-- Posts Table -->
             <table class="table table-striped table-borderless table-vcenter">
                 <thead class="thead-light">
                     <tr>
                         <th style="width: 60px;">ID</th>
-                        <th style="width: 33%;">Title</th>
-                        <th class="d-none d-sm-table-cell">Author</th>
-                        <th class="d-none d-xl-table-cell">Created</th>
-                        <th class="d-none d-xl-table-cell">Published</th>
-                        <th style="width: 100px;" class="text-center">Actions</th>
+                        <th style="width: 33%;">Nombre</th>
+                        <th class="d-none d-sm-table-cell">Empresa</th>
+                        <th class="d-none d-xl-table-cell">Fecha</th>
+                        <th style="width: 100px;" class="text-center">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
+                @foreach($tab_cotizacion as $key => $value)
                     <tr>
                         <td>
                             150
@@ -159,9 +172,6 @@
                             <a href="be_pages_generic_profile.html">Lori Moore</a>
                         </td>
                         <td class="d-none d-xl-table-cell">
-                            January 14, 2020 at 17:20
-                        </td>
-                        <td class="d-none d-xl-table-cell">
                             January 15, 2020 at 16:34
                         </td>
                         <td class="text-center">
@@ -173,295 +183,13 @@
                             </a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            149
-                        </td>
-                        <td>
-                            <i class="fa fa-eye text-success mr-1"></i>
-                            <a href="be_pages_blog_story.html">
-                                Learn to code in one week
-                            </a>
-                        </td>
-                        <td class="d-none d-sm-table-cell">
-                            <a href="be_pages_generic_profile.html">Marie Duncan</a>
-                        </td>
-                        <td class="d-none d-xl-table-cell">
-                            January 13, 2020 at 15:36
-                        </td>
-                        <td class="d-none d-xl-table-cell">
-                            January 16, 2020 at 20:48
-                        </td>
-                        <td class="text-center">
-                            <a class="btn btn-sm btn-light" href="be_pages_blog_post_edit.html">
-                                <i class="fa fa-fw fa-pencil-alt text-primary"></i>
-                            </a>
-                            <a class="btn btn-sm btn-light" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-times text-danger"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            148
-                        </td>
-                        <td>
-                            <i class="fa fa-eye text-success mr-1"></i>
-                            <a href="be_pages_blog_story.html">
-                                Can you travel &amp; work efficiently?
-                            </a>
-                        </td>
-                        <td class="d-none d-sm-table-cell">
-                            <a href="be_pages_generic_profile.html">Lori Moore</a>
-                        </td>
-                        <td class="d-none d-xl-table-cell">
-                            January 11, 2020 at 20:12
-                        </td>
-                        <td class="d-none d-xl-table-cell">
-                            January 16, 2020 at 19:19
-                        </td>
-                        <td class="text-center">
-                            <a class="btn btn-sm btn-light" href="be_pages_blog_post_edit.html">
-                                <i class="fa fa-fw fa-pencil-alt text-primary"></i>
-                            </a>
-                            <a class="btn btn-sm btn-light" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-times text-danger"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            147
-                        </td>
-                        <td>
-                            <i class="fa fa-eye text-danger mr-1"></i>
-                            <a href="be_pages_blog_story.html">
-                                The best places to work from
-                            </a>
-                        </td>
-                        <td class="d-none d-sm-table-cell">
-                            <a href="be_pages_generic_profile.html">Adam McCoy</a>
-                        </td>
-                        <td class="d-none d-xl-table-cell">
-                            January 10, 2020 at 18:10
-                        </td>
-                        <td class="d-none d-xl-table-cell">
-                            January 11, 2020 at 17:20
-                        </td>
-                        <td class="text-center">
-                            <a class="btn btn-sm btn-light" href="be_pages_blog_post_edit.html">
-                                <i class="fa fa-fw fa-pencil-alt text-primary"></i>
-                            </a>
-                            <a class="btn btn-sm btn-light" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-times text-danger"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            146
-                        </td>
-                        <td>
-                            <i class="fa fa-eye text-success mr-1"></i>
-                            <a href="be_pages_blog_story.html">
-                                Visual Studio Code vs Atom Editor
-                            </a>
-                        </td>
-                        <td class="d-none d-sm-table-cell">
-                            <a href="be_pages_generic_profile.html">Henry Harrison</a>
-                        </td>
-                        <td class="d-none d-xl-table-cell">
-                            January 07, 2020 at 23:19
-                        </td>
-                        <td class="d-none d-xl-table-cell">
-                            January 10, 2020 at 15:12
-                        </td>
-                        <td class="text-center">
-                            <a class="btn btn-sm btn-light" href="be_pages_blog_post_edit.html">
-                                <i class="fa fa-fw fa-pencil-alt text-primary"></i>
-                            </a>
-                            <a class="btn btn-sm btn-light" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-times text-danger"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            145
-                        </td>
-                        <td>
-                            <i class="fa fa-eye text-success mr-1"></i>
-                            <a href="be_pages_blog_story.html">
-                                Exploring the mysterious mountains
-                            </a>
-                        </td>
-                        <td class="d-none d-sm-table-cell">
-                            <a href="be_pages_generic_profile.html">Marie Duncan</a>
-                        </td>
-                        <td class="d-none d-xl-table-cell">
-                            January 04, 2020 at 15:12
-                        </td>
-                        <td class="d-none d-xl-table-cell">
-                            January 05, 2020 at 19:12
-                        </td>
-                        <td class="text-center">
-                            <a class="btn btn-sm btn-light" href="be_pages_blog_post_edit.html">
-                                <i class="fa fa-fw fa-pencil-alt text-primary"></i>
-                            </a>
-                            <a class="btn btn-sm btn-light" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-times text-danger"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            144
-                        </td>
-                        <td>
-                            <i class="fa fa-eye text-success mr-1"></i>
-                            <a href="be_pages_blog_story.html">
-                                Inspire a new generation of web developers
-                            </a>
-                        </td>
-                        <td class="d-none d-sm-table-cell">
-                            <a href="be_pages_generic_profile.html">Marie Duncan</a>
-                        </td>
-                        <td class="d-none d-xl-table-cell">
-                            January 03, 2020 at 17:33
-                        </td>
-                        <td class="d-none d-xl-table-cell">
-                            January 08, 2020 at 14:51
-                        </td>
-                        <td class="text-center">
-                            <a class="btn btn-sm btn-light" href="be_pages_blog_post_edit.html">
-                                <i class="fa fa-fw fa-pencil-alt text-primary"></i>
-                            </a>
-                            <a class="btn btn-sm btn-light" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-times text-danger"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            143
-                        </td>
-                        <td>
-                            <i class="fa fa-eye text-danger mr-1"></i>
-                            <a href="be_pages_blog_story.html">
-                                What to do in the night market
-                            </a>
-                        </td>
-                        <td class="d-none d-sm-table-cell">
-                            <a href="be_pages_generic_profile.html">Lori Grant</a>
-                        </td>
-                        <td class="d-none d-xl-table-cell">
-                            January 02, 2020 at 08:23
-                        </td>
-                        <td class="d-none d-xl-table-cell">
-                            January 07, 2020 at 21:
-                        </td>
-                        <td class="text-center">
-                            <a class="btn btn-sm btn-light" href="be_pages_blog_post_edit.html">
-                                <i class="fa fa-fw fa-pencil-alt text-primary"></i>
-                            </a>
-                            <a class="btn btn-sm btn-light" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-times text-danger"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            142
-                        </td>
-                        <td>
-                            <i class="fa fa-eye text-success mr-1"></i>
-                            <a href="be_pages_blog_story.html">
-                                Modern CSS for Developers
-                            </a>
-                        </td>
-                        <td class="d-none d-sm-table-cell">
-                            <a href="be_pages_generic_profile.html">Henry Harrison</a>
-                        </td>
-                        <td class="d-none d-xl-table-cell">
-                            January 02, 2020 at 14:54
-                        </td>
-                        <td class="d-none d-xl-table-cell">
-                            January 05, 2020 at 20:18
-                        </td>
-                        <td class="text-center">
-                            <a class="btn btn-sm btn-light" href="be_pages_blog_post_edit.html">
-                                <i class="fa fa-fw fa-pencil-alt text-primary"></i>
-                            </a>
-                            <a class="btn btn-sm btn-light" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-times text-danger"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            141
-                        </td>
-                        <td>
-                            <i class="fa fa-eye text-success mr-1"></i>
-                            <a href="be_pages_blog_story.html">
-                                Laravel 6 From Scratch
-                            </a>
-                        </td>
-                        <td class="d-none d-sm-table-cell">
-                            <a href="be_pages_generic_profile.html">Carol Ray</a>
-                        </td>
-                        <td class="d-none d-xl-table-cell">
-                            January 01, 2020 at 12:20
-                        </td>
-                        <td class="d-none d-xl-table-cell">
-                            January 01, 2020 at 11:30
-                        </td>
-                        <td class="text-center">
-                            <a class="btn btn-sm btn-light" href="be_pages_blog_post_edit.html">
-                                <i class="fa fa-fw fa-pencil-alt text-primary"></i>
-                            </a>
-                            <a class="btn btn-sm btn-light" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-times text-danger"></i>
-                            </a>
-                        </td>
-                    </tr>
+                @endforeach
                 </tbody>
             </table>
             <!-- END Posts Table -->
 
             <!-- Posts Pagincation -->
-            <nav aria-label="Posts Navigation">
-                <ul class="pagination justify-content-end">
-                    <li class="page-item">
-                        <a class="page-link" href="javascript:void(0)" tabindex="-1" aria-label="Previous">
-                            <span aria-hidden="true">
-                                <i class="fa fa-angle-double-left"></i>
-                            </span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li class="page-item active">
-                        <a class="page-link" href="javascript:void(0)">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="javascript:void(0)">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="javascript:void(0)">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="javascript:void(0)">4</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="javascript:void(0)" aria-label="Next">
-                            <span aria-hidden="true">
-                                <i class="fa fa-angle-double-right"></i>
-                            </span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            {{ $tab_cotizacion->appends(Request::only(['perPage','q']))->render() }}  
             <!-- END Posts Pagincation -->
         </div>
     </div>

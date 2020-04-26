@@ -3,6 +3,7 @@
 namespace portal\Http\Controllers\Cms;
 //*******agregar esta linea******//
 use portal\Models\Cms\tab_notificacion;
+use portal\Models\Cms\tab_cotizacion;
 use View;
 use DB;
 use Auth;
@@ -34,7 +35,40 @@ class panelController extends Controller
     public function inicio(Request $request)
     {
 
-        return View::make('dashboard');
+        $sortBy = 'id';
+        $orderBy = 'desc';
+        $perPage = 5;
+        $q = null;
+        $columnas = [
+            ['valor'=>'bnumberdialed', 'texto'=>'Número de Origen'],
+            ['valor'=>'bnumberdialed', 'texto'=>'Número de Destino']
+        ];
+    
+        if ($request->has('orderBy')){
+            $orderBy = $request->query('orderBy');
+        }
+        if ($request->has('sortBy')){
+            $sortBy = $request->query('sortBy');
+        } 
+        if ($request->has('perPage')){
+            $perPage = $request->query('perPage');
+        } 
+        if ($request->has('q')){
+            $q = $request->query('q');
+        }
+  
+        $tab_cotizacion = tab_cotizacion::select( 'id')
+        ->orderBy($sortBy, $orderBy)
+        ->paginate($perPage);
+
+        return View::make('dashboard')->with([
+            'tab_cotizacion' => $tab_cotizacion,
+            'orderBy' => $orderBy,
+            'sortBy' => $sortBy,
+            'perPage' => $perPage,
+            'columnas' => $columnas,
+            'q' => $q
+        ]);
 
     }
 
