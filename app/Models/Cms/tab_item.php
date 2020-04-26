@@ -34,4 +34,34 @@ class tab_item extends Model
           break;
       }
     }
+
+    protected function maximo(){
+
+      $tab_maximo = tab_item::select( 'id')
+      ->orderBy('nu_orden', 'desc')
+      ->first();
+
+      if($tab_maximo!=null){
+        $maximo = $tab_maximo->id;
+      }else{
+        $maximo = 0;
+      }
+
+      return $maximo;
+    }
+
+    protected function minimo(){
+
+      $tab_minimo = tab_item::select( 'id')
+      ->orderBy('nu_orden', 'asc')
+      ->first();
+
+      if($tab_minimo!=null){
+        $minimo = $tab_minimo->id;
+      }else{
+        $minimo = 0;
+      }
+
+      return $minimo;
+    }
 }

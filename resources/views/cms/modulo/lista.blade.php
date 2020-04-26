@@ -108,12 +108,24 @@
                                 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" title="Borrar" data-target="#borrar" data-item_id="{{ $value->id }}" >
                                     <i class="fa fa-times"></i>
                                 </button>
+                                @if ($value->id != $maximo)
                                 <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Subir" onclick="location.href='{{ url('/cms/modulo/arriba').'/'. $value->id }}'">
                                     <i class="fa fa-arrow-alt-circle-up"></i>
                                 </button>
+                                @else
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Subir" disabled>
+                                    <i class="fa fa-arrow-alt-circle-up"></i>
+                                </button>
+                                @endif
+                                @if ($value->id != $minimo)
                                 <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Bajar" onclick="location.href='{{ url('/cms/modulo/abajo').'/'. $value->id }}'">
                                     <i class="fa fa-arrow-alt-circle-down"></i>
                                 </button>
+                                @else
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Bajar" disabled>
+                                    <i class="fa fa-arrow-alt-circle-down"></i>
+                                </button>
+                                @endif
                             </div>
                         </td>
                     </tr>

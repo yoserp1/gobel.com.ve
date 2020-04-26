@@ -38,7 +38,7 @@ class moduloController extends Controller
     public function lista(Request $request)
     {
 
-        $sortBy = 'tab_item.id';
+        $sortBy = 'tab_item.nu_orden';
         $orderBy = 'desc';
         $perPage = 5;
         $q = null;
@@ -60,7 +60,8 @@ class moduloController extends Controller
             $q = $request->query('q');
         }
 
-        $tab_item = tab_item::select( 'tab_item.id', 'de_item', 'de_contenido', 'de_item_formato', 'tab_item.in_activo')
+        $tab_item = tab_item::select( 'tab_item.id', 'de_item', 'de_contenido', 'de_item_formato', 
+        'tab_item.in_activo', 'nu_orden')
         ->join('tab_item_formato as t01','t01.id','=','tab_item.id_tab_item_formato')
         //->where('tab_item.in_activo', '=', true)
         //->search($q, $sortBy)
@@ -68,13 +69,18 @@ class moduloController extends Controller
         ->orderBy($sortBy, $orderBy)
         ->paginate($perPage);
 
+        $maximo = tab_item::maximo();
+        $minimo = tab_item::minimo();
+
         return View::make('cms.modulo.lista')->with([
             'tab_item' => $tab_item,
             'orderBy' => $orderBy,
             'sortBy' => $sortBy,
             'perPage' => $perPage,
             'columnas' => $columnas,
-            'q' => $q
+            'q' => $q,
+            'maximo' => $maximo,
+            'minimo' => $minimo,
         ]);
     }
 
@@ -399,9 +405,23 @@ class moduloController extends Controller
       DB::beginTransaction();
       try {
 
-        /*$tab_item = tab_item::find( $id);
-        $tab_item->in_activo = true;
-        $tab_item->save();*/
+        $actual = tab_item::select( 'nu_orden')
+        ->where('id', '=', $id)
+        ->first();
+
+        $nu_arriba = $actual->nu_orden + 1;
+
+        $arriba = tab_item::select( 'id', 'nu_orden')
+        ->where('nu_orden', '=', $nu_arriba)
+        ->first();
+
+        $tab_item = tab_item::find( $id);
+        $tab_item->nu_orden = $nu_arriba;
+        $tab_item->save();
+
+        $tab_arriba = tab_item::find( $arriba->id);
+        $tab_arriba->nu_orden = $arriba->nu_orden - 1;
+        $tab_arriba->save();
 
         DB::commit();
 
@@ -428,9 +448,23 @@ class moduloController extends Controller
       DB::beginTransaction();
       try {
 
-        /*$tab_item = tab_item::find( $id);
-        $tab_item->in_activo = true;
-        $tab_item->save();*/
+        $actual = tab_item::select( 'nu_orden')
+        ->where('id', '=', $id)
+        ->first();
+
+        $nu_abajo = $actual->nu_orden - 1;
+
+        $abajo = tab_item::select( 'id', 'nu_orden')
+        ->where('nu_orden', '=', $nu_abajo)
+        ->first();
+
+        $tab_item = tab_item::find( $id);
+        $tab_item->nu_orden = $nu_abajo;
+        $tab_item->save();
+
+        $tab_abajo = tab_item::find( $abajo->id);
+        $tab_abajo->nu_orden = $abajo->nu_orden + 1;
+        $tab_abajo->save();
 
         DB::commit();
 
