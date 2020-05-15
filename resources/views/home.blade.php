@@ -49,6 +49,14 @@
                         <a href="#{{ $value->de_item_formato }}" class="nav-link">{{ $value->de_item }}</a>
                     </li>
                     @endforeach
+                    {{--<li class="nav-item dropdown">
+                        <a href="javascript:void(0)" class="nav-link dropdown-toggle active" data-toggle="dropdown">Portfolio</a>
+                        <ul class="nav-bar submenu dropdown-menu list-unstyled p-0">
+                           <li class="nav-item">
+                                <a href="#" class="nav-link">2 Column</a>
+                            </li>
+                        </ul>
+                    </li>--}}
                 </ul>
             </div>
             <div class="contact_btn">
@@ -190,8 +198,8 @@
                         </a>
                     </div>
                 </div>
-            </div>--}}
-        </div>
+            </div>
+        </div>--}}
         <div class="container footer-bottom">
             <div class="row">
                 <div class="col-lg-4">
